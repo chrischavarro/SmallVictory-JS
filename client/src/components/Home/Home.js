@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import Smiley from './Smiley';
 import HomeText from './HomeText';
+import Dashboard from '../Dashboard';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 class Home extends Component {
+  componentWillMount() {
+    this.props.fetchUser();
+  }
+
   renderPage() {
+    console.log(this.props.auth)
       if (this.props.auth) {
         return (
           <div>
-            Home logged in!
+            <Dashboard />
           </div>
         )
       } else {
@@ -38,4 +46,8 @@ class Home extends Component {
   }
 }
 
-export default Home;
+function mapStateToProps({ auth }) {
+  return { auth };
+};
+
+export default connect(mapStateToProps, actions)(Home);
