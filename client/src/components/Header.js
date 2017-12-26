@@ -8,7 +8,7 @@ class Header extends Component {
       <nav style={{ backgroundColor: '#3C78D8' }}>
         <div className="nav-wrapper">
           <Link to ="/">
-            <img src={Logo} style={{ width: '200px', height: '30px', marginTop: '20px', marginLeft: '20px' }}/>
+            <img src={Logo} style={{ width: '200px', height: '30px', marginTop: '20px', marginLeft: '20px' }} alt="Small Victory" />
           </Link>
         </div>
       </nav>

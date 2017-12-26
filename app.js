@@ -1,14 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieSession = require('cookie-session');
 const passport = require('passport');
 const logger = require('morgan');
+const session = require('express-session');
+
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const keys = require('./config/keys')
 const authController = require('./routes/authController');
 require('./services/passport');
+
 const app = express();
-app.use(passport.initialize());
-app.use(passport.session());
 
 if (process.env.NODE_ENV === 'production') {
   mongoose.connect(keys.mongoURI)
@@ -16,10 +19,26 @@ if (process.env.NODE_ENV === 'production') {
   mongoose.connect('mongodb://localhost/small-victory');
 }
 
-app.use(logger('dev'));
+// app.use(session({
+//   secret: 'small-victory',
+//   resave: true,
+//   saveUninitialized: true
+// }))
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    secret: 'FDSJLDSJDFSCXVNM'
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(cookieParser());
+
+
+app.use(logger('dev'));
 
 app.use('/', authController);
 

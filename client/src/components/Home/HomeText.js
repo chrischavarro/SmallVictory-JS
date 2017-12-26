@@ -6,7 +6,7 @@ class HomeText extends Component {
     return (
       <div className="row" style={{ marginBottom: '10px' }}>
         <div className="col s4 offset-s4">
-          <img src={Text} style={{ width: '400px', height: '100px' }} />
+          <img src={Text} style={{ width: '400px', height: '100px' }} alt="Small Victory"/>
         </div>
       </div>
     )
