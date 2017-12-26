@@ -20,7 +20,7 @@ class Home extends Component {
               Do one 5 minute task that <br/> makes you <span style={{ textDecoration: 'underline' }}>better.</span>
             </span>
             <div style={{ marginTop: '20px' }}>
-              <Link to="/auth/google" className="waves-effect waves-light btn-large" style={{ backgroundColor: '#3C78D8', fontSize: '25px' }}>Get Started</Link>
+              <a href="/auth/google" className="waves-effect waves-light btn-large" style={{ backgroundColor: '#3C78D8', fontSize: '25px' }}>Get Started</a>
               <span style={{ fontWeight: '400!important', fontSize: '26px', textDecoration: 'none' }}>
               </span>
             </div>
