@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Smiley from './Smiley';
 import HomeText from './HomeText';
 import Dashboard from '../Dashboard';
+import WizardForm from '../Forms/WizardForm';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -11,15 +12,27 @@ class Home extends Component {
     this.props.fetchUser();
   }
 
+  handleSubmit() {
+    console.log('Submitted form')
+  }
+
   renderPage() {
     console.log(this.props.auth)
-      if (this.props.auth) {
+      if (this.props.auth && this.props.auth.profile) {
         return (
           <div>
             <Dashboard />
           </div>
         )
-      } else {
+      }
+      else if (this.props.auth && !this.props.auth.profile) {
+          return (
+            <div>
+              <WizardForm onSubmit={() => this.handleSubmit()} />
+            </div>
+          )
+      }
+      else {
         return (
           <div style={{ marginTop: '15%', textAlign: 'center', color: '#7d7d7d' }}>
             <Smiley />
