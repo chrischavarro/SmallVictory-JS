@@ -11,7 +11,8 @@ const WizardFormSecondPage = props => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
-        <Field name="phone" type="text" component={renderField} label="Phone Number" />
+        <Field name="phone" type="text" component={renderField} label="What's your phone number?" />
+        <Field name="time" type="time" component={renderField} label="What time do you usually wake up?" />
 
         <div>
           <button type="button" className="previous btn" onClick={previousPage}>
