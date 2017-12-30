@@ -9,6 +9,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys')
 const authController = require('./routes/authController');
+const seedController = require('./routes/seedController');
+const tagController = require('./routes/tagController');
 require('./services/passport');
 
 const app = express();
@@ -41,6 +43,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));
 
 app.use('/', authController);
+app.use('/', seedController);
+app.use('/', tagController);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

@@ -9,7 +9,7 @@ const renderError = ({ meta: { touched, error } }) =>
 const WizardFormSecondPage = props => {
   const { handleSubmit, previousPage } = props
   return (
-    <div className="container">
+    <div className="container" style={{ paddingTop: '150px' }}>
       <form onSubmit={handleSubmit}>
         <Field name="phone" type="text" component={renderField} label="What's your phone number?" />
         <Field name="time" type="time" component={renderField} label="What time do you usually wake up?" />

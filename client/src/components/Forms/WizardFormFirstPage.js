@@ -1,45 +1,7 @@
-// import React from 'react'
-// import { Field, reduxForm } from 'redux-form'
-// import validate from './validate'
-// import renderField from './renderField'
-//
-// const WizardFormFirstPage = props => {
-//   const { handleSubmit } = props
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <Field
-//         name="firstName"
-//         type="text"
-//         component={renderField}
-//         label="First Name"
-//       />
-//       <Field
-//         name="lastName"
-//         type="text"
-//         component={renderField}
-//         label="Last Name"
-//       />
-//       <div>
-//         <button type="submit" className="next">
-//           Next
-//         </button>
-//       </div>
-//     </form>
-//   )
-// }
-//
-// export default reduxForm({
-//   form: 'wizard', // <------ same form name
-//   destroyOnUnmount: false, // <------ preserve form data
-//   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-//   validate
-// })(WizardFormFirstPage)
-
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import validate from './validate';
 import renderField from './renderField';
-// const { DOM: { input, select, textarea }} = React
 // checked={true} className="btn" onChange={() => console.log('change')}
 // <div>
 // <input type="checkbox" key={day} name={day} value={day} id={day}  />{day}
@@ -60,10 +22,9 @@ class WizardFormFirstPage extends Component {
     return days.map(day => {
       return (
         <div key={day}>
-          <input type="checkbox" className="filled-in" id="filled-in-box" name={day} key={day}  />
-          <label for="filled-in-box">{day}</label>
+          <input type="checkbox" className="filled-in" id={day} name={day} key={day}  />
+          <label htmlFor={day}>{day}</label>
         </div>
-
       )
     })
   }
@@ -71,20 +32,9 @@ class WizardFormFirstPage extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className="container">
+      <div className="container" style={{ paddingTop: '150px', marginBottom: '20px' }}>
+        <h4 className="center-align">What days do you want to get a task?</h4>
         <form onSubmit={handleSubmit}>
-        <p>
-          <input type="checkbox" className="filled-in" id="filled-in-box"  />
-          <label for="filled-in-box">Filled in</label>
-        </p>
-        <p>
-          <input type="checkbox" className="filled-in" id="filled-in-box"  />
-          <label for="filled-in-box">Filled in</label>
-        </p>
-        <p>
-          <input type="checkbox" className="filled-in" id="filled-in-box"  />
-          <label for="filled-in-box">Filled in</label>
-        </p>
           {this.renderFields()}
           <div>
             <button type="submit" className="next btn">

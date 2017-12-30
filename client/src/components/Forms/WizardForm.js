@@ -3,8 +3,14 @@ import PropTypes from 'prop-types'
 import WizardFormFirstPage from './WizardFormFirstPage'
 import WizardFormSecondPage from './WizardFormSecondPage'
 import WizardFormThirdPage from './WizardFormThirdPage'
+import { fetchTags } from '../../actions';
+import { connect } from 'react-redux';
 
 class WizardForm extends Component {
+  componentDidMount() {
+      this.props.fetchTags();
+  }
+
   constructor(props) {
     super(props)
     this.nextPage = this.nextPage.bind(this)
@@ -22,6 +28,7 @@ class WizardForm extends Component {
   }
 
   render() {
+    console.log('Found tags', this.props.tags)
     const { onSubmit } = this.props
     const { page } = this.state
     return (
@@ -37,6 +44,7 @@ class WizardForm extends Component {
           <WizardFormThirdPage
             previousPage={this.previousPage}
             onSubmit={onSubmit}
+            test={this.props.tags}
           />
         )}
       </div>
@@ -48,4 +56,8 @@ WizardForm.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-export default WizardForm
+function mapStateToProps({ tags }) {
+  return { tags };
+};
+
+export default connect(mapStateToProps, { fetchTags })(WizardForm);
