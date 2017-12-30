@@ -20,6 +20,7 @@ const profileSchema = new Schema({
   friday: Boolean,
   saturday: Boolean,
   sunday: Boolean,
+  tags: [{ type: Schema.Types.ObjectId, ref: 'Tag' }]
 });
 
 const Profile = mongoose.model('Profile', profileSchema);

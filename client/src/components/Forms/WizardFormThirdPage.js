@@ -10,7 +10,7 @@ class WizardFormThirdPage extends Component {
     return tags.map(tag => {
       return (
         <div key={tag.name}>
-          <Field name={`key-${tag.name}`} id={tag.name} component="input" type="checkbox" key={tag.name} />
+          <Field name={`key-${tag._id}`} id={tag.name} component="input" type="checkbox" key={tag.name} />
           <label htmlFor={tag.name}>{tag.name}</label>
         </div>
       )
