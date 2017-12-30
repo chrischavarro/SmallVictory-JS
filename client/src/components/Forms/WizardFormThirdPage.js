@@ -16,6 +16,7 @@ class WizardFormThirdPage extends Component {
       )
     })
   }
+  // {this.renderTags()}
   render() {
     // console.log('Test props!', this.props.tags)
     const { handleSubmit, pristine, previousPage, submitting } = this.props
@@ -23,6 +24,7 @@ class WizardFormThirdPage extends Component {
       <div className="container" style={{ paddingTop: '150px', marginBottom: '20px' }}>
         <h4 className="center-align">What do you want to get better at?</h4>
         <form onSubmit={handleSubmit}>
+          
           {this.renderTags()}
           <div>
             <button type="button" className="previous btn" onClick={previousPage}>
