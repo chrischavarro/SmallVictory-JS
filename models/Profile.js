@@ -12,7 +12,7 @@ const profileSchema = new Schema({
     },
     required: [true, 'Phone number required']
   },
-  notifyTime: Date,
+  time: String,
   monday: Boolean,
   tuesday: Boolean,
   wednesday: Boolean,

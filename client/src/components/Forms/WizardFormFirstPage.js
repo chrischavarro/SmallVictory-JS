@@ -16,13 +16,21 @@ import renderField from './renderField';
 // className="filled-in"
 // id="filled-in-box"
 // />
+// <input type="checkbox" className="filled-in" id={day} name={day} key={day} value={day} />
 class WizardFormFirstPage extends Component {
   renderFields() {
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     return days.map(day => {
       return (
         <div key={day}>
-          <input type="checkbox" className="filled-in" id={day} name={day} key={day}  />
+          <Field
+            name={day}
+            id={day}
+            component="input"
+            type="checkbox"
+            key={day}
+
+          />
           <label htmlFor={day}>{day}</label>
         </div>
       )
@@ -30,7 +38,6 @@ class WizardFormFirstPage extends Component {
   }
   render() {
     const { handleSubmit } = this.props;
-
     return (
       <div className="container" style={{ paddingTop: '150px', marginBottom: '20px' }}>
         <h4 className="center-align">What days do you want to get a task?</h4>
@@ -51,5 +58,6 @@ export default reduxForm({
   form: 'wizard',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
+  initialValues: { monday: false, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false},
   validate
 })(WizardFormFirstPage)

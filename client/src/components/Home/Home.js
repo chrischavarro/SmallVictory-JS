@@ -5,19 +5,27 @@ import Dashboard from '../Dashboard';
 import WizardForm from '../Forms/WizardForm';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import * as actions from '../../actions';
 
 class Home extends Component {
+
   componentWillMount() {
     this.props.fetchUser();
   }
 
-  handleSubmit() {
-    console.log('Submitted form')
+  handleSubmit(values) {
+    const { history } = this.props
+
+    console.log('Submitted form', values)
+    this.props.createProfile(values, history);
   }
 
   renderPage() {
     // console.log(this.props.auth)
+    // console.log(this.props.form)
+    const { history } = this.props
+
       if (this.props.auth && this.props.auth.profile) {
         return (
           <div>
@@ -28,7 +36,7 @@ class Home extends Component {
       else if (this.props.auth && !this.props.auth.profile) {
           return (
             <div>
-              <WizardForm onSubmit={() => this.handleSubmit()} />
+              <WizardForm onSubmit={(values) => this.handleSubmit(values, history)} />
             </div>
           )
       }
@@ -51,6 +59,7 @@ class Home extends Component {
   }
 
   render() {
+    const { history } = this.props
     return (
       <div>
         {this.renderPage()}
@@ -59,8 +68,11 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+    form: state.form
+  }
 };
 
 export default connect(mapStateToProps, actions)(Home);

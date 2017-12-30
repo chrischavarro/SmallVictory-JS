@@ -11,6 +11,7 @@ const keys = require('./config/keys')
 const authController = require('./routes/authController');
 const seedController = require('./routes/seedController');
 const tagController = require('./routes/tagController');
+const profileController = require('./routes/profileController');
 require('./services/passport');
 
 const app = express();
@@ -45,6 +46,7 @@ app.use(logger('dev'));
 app.use('/', authController);
 app.use('/', seedController);
 app.use('/', tagController);
+app.use('/', profileController);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

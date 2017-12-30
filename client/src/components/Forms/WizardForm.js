@@ -28,7 +28,7 @@ class WizardForm extends Component {
   }
 
   render() {
-    console.log('Found tags', this.props.tags)
+    // console.log('Found tags', this.props.tags)
     const { onSubmit } = this.props
     const { page } = this.state
     return (
@@ -44,7 +44,7 @@ class WizardForm extends Component {
           <WizardFormThirdPage
             previousPage={this.previousPage}
             onSubmit={onSubmit}
-            test={this.props.tags}
+            tags={this.props.tags}
           />
         )}
       </div>
