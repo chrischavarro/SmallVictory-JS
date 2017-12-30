@@ -10,7 +10,7 @@ class WizardFormThirdPage extends Component {
     return tags.map(tag => {
       return (
         <div key={tag.name}>
-          <Field name={tag.name} id={tag.name} component="input" type="checkbox" key={tag.name} />
+          <Field name={`key-${tag.name}`} id={tag.name} component="input" type="checkbox" key={tag.name} />
           <label htmlFor={tag.name}>{tag.name}</label>
         </div>
       )
@@ -24,7 +24,7 @@ class WizardFormThirdPage extends Component {
       <div className="container" style={{ paddingTop: '150px', marginBottom: '20px' }}>
         <h4 className="center-align">What do you want to get better at?</h4>
         <form onSubmit={handleSubmit}>
-          
+
           {this.renderTags()}
           <div>
             <button type="button" className="previous btn" onClick={previousPage}>
