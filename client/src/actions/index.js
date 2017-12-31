@@ -13,6 +13,6 @@ export const fetchTags = () => async dispatch => {
 
 export const createProfile = (values, history) => async dispatch => {
   const res = await axios.post('/api/profile/create', values)
-  // dispatch({ type: CREATE_PROFILE, payload: res.data });
-  // history.push('/select-track')
+  dispatch({ type: CREATE_PROFILE, payload: res.data });
+  history.push('/select-track')
 }

@@ -21,7 +21,7 @@ const filterTagsFromRequest = (requestBody) => {
 profileController.post('/api/profile/create', (req, res) => {
   const { phone, time, monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body;
   const profileTags = filterTagsFromRequest(req.body)
-  // const user = req.user;
+  const user = req.user;
   console.log(req.body)
   console.log(profileTags)
   // const tag =
@@ -48,15 +48,21 @@ profileController.post('/api/profile/create', (req, res) => {
   profileTags.tags.forEach(function(tag) {
     newProfile.tags.push(tag)
   })
-  //
-User.findById( user.id )
-  .exec((err, user) => {
-    user.profile.push(newProfile)
-    newProfile.save();
-    user.save();
-  })
-  res.send('Profile created!')
   console.log('New profile', newProfile)
+  newProfile.save();
+
+  //
+  User.findById( user._id )
+    .exec((err, foundUser) => {
+      if (err) {
+        console.log('Something went wrong!', err)
+        return;
+      }
+      // console.log(foundUser)
+      foundUser.profile = newProfile._id
+      foundUser.save();
+    })
+    res.send('Profile created!')
 })
 
 module.exports = profileController;
