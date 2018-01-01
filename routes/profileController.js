@@ -23,7 +23,7 @@ profileController.post('/api/profile/create', (req, res) => {
   const profileTags = filterTagsFromRequest(req.body)
   const user = req.user;
   console.log(req.body)
-  console.log(profileTags)
+  // console.log(profileTags)
   // const tag =
   // Tag.find()
   //   .exec((err, tags) => {
@@ -49,9 +49,7 @@ profileController.post('/api/profile/create', (req, res) => {
     newProfile.tags.push(tag)
   })
   console.log('New profile', newProfile)
-  newProfile.save();
 
-  //
   User.findById( user._id )
     .exec((err, foundUser) => {
       if (err) {
@@ -62,7 +60,13 @@ profileController.post('/api/profile/create', (req, res) => {
       foundUser.profile = newProfile._id
       foundUser.save();
     })
-    res.send('Profile created!')
+    newProfile.save((err, profile) => {
+      if (err) {
+        console.log('Something went wrong!', err)
+        return;
+      }
+      res.send('Done!')
+    });
 })
 
 module.exports = profileController;

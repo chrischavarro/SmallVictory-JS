@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import validate from './validate';
-import renderField from './renderField';
+// import renderField from './renderField';
 // checked={true} className="btn" onChange={() => console.log('change')}
 // <div>
 // <input type="checkbox" key={day} name={day} value={day} id={day}  />{day}
