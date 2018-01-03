@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_TAGS, CREATE_PROFILE, FETCH_TRACKS } from './types';
+import { FETCH_USER, FETCH_TAGS, CREATE_PROFILE, FETCH_TRACKS, SELECT_TRACK } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
   dispatch({ type: FETCH_USER, payload: res.data });
+  // console.log('User fetched', res.data)
 };
 
 export const fetchTags = () => async dispatch => {
@@ -18,6 +19,12 @@ export const createProfile = (values, history) => async dispatch => {
 }
 
 export const fetchTracks = () =>  async dispatch => {
-  const res = await axios.get('/api/tracks/get')
-  dispatch({ type: FETCH_TAGS, payload: res.data })
+  const res = await axios.get('/api/tracks/get');
+  dispatch({ type: FETCH_TRACKS, payload: res.data });
+}
+
+export const selectTrack = (track, history) => async dispatch => {
+  const res = await axios.get(`/api/tracks/select/${track}`);
+  history.push('/');
+  dispatch({ type: SELECT_TRACK, payload: res.data });
 }

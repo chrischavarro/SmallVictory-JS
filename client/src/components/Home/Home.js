@@ -17,12 +17,10 @@ class Home extends Component {
   handleSubmit(values) {
     const { history } = this.props
 
-    // console.log('Submitted form', values)
     this.props.createProfile(values, history);
   }
 
   renderPage() {
-
     // console.log(this.props.form)
     const { history } = this.props
 
