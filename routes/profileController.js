@@ -22,7 +22,7 @@ profileController.post('/api/profile/create', (req, res) => {
   const { phone, time, monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body;
   const profileTags = filterTagsFromRequest(req.body)
   const user = req.user;
-  console.log(req.body)
+  // console.log(req.body)
   // console.log(profileTags)
   // const tag =
   // Tag.find()
@@ -48,7 +48,7 @@ profileController.post('/api/profile/create', (req, res) => {
   profileTags.tags.forEach(function(tag) {
     newProfile.tags.push(tag)
   })
-  console.log('New profile', newProfile)
+  // console.log('New profile', newProfile)
 
   User.findById( user._id )
     .exec((err, foundUser) => {

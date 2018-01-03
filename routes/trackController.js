@@ -7,7 +7,7 @@ trackController.get('/api/tracks/get', (req, res) => {
   const { profile } = req.user
   Profile.findById(profile)
     .exec((err, profile) => {
-      console.log('Profile!', profile)
+      console.log('From track controller!', profile.tags)
     })
   console.log('Api tags', profile);
 })
