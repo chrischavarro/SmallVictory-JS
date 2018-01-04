@@ -9,18 +9,26 @@ class Dashboard extends Component {
 
   renderOverview() {
     const {name} = this.props.auth
-    return (
-      <div className="row">
+    if (this.props.summary) {
+      const completed = this.props.summary[0].completed.length
+      const attempted = this.props.summary[1].attempted.length
+      const percentage = this.props.summary[2]
+      console.log(this.props.summary)
+      // console.log(this.props.summary)
+
+      return (
+        <div className="row">
         <div className="col s6 offset-s3 center-align" style={{ }}>
-          <h4>Whats up, {name}!</h4>
-          <h4>Youre currently on a 0 day streak</h4>
-          <h4>Youve completed x out of x victories</h4>
-          <h4>Youve completed x% of your victories!</h4>
-          <h4>Youre on the x track</h4>
-          <h4>Ready for todays task?</h4>
+        <h4>Whats up, {name}!</h4>
+        <h4>Youre currently on a x day streak</h4>
+        <h4>Youve completed {completed} out of {attempted} victories</h4>
+        <h4>Youve completed {percentage}% of your victories!</h4>
+        <h4>Youre on the x track</h4>
+        <h4>Ready for todays task?</h4>
         </div>
-      </div>
-    )
+        </div>
+      )
+    }
   }
   render() {
     return (
