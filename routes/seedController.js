@@ -2,9 +2,10 @@ const express = require('express');
 const seedController = express.Router();
 const Tag = require('../models/Tag');
 const Track = require('../models/Track');
+const TaskType = require('../models/TaskType');
+const Task = require('../models/Task');
 
  seedController.get('/seed/tags', (req, res) => {
-   console.log('Pre seed');
   const tags = [
     { name: 'Foreign Languages' },
     { name: 'Business' },
@@ -14,15 +15,11 @@ const Track = require('../models/Track');
     { name: 'Lifting' }
   ];
 
-  // tags.map((tag) => {
-  //   var newTag = new Tag()
-  // })
   for (tag of tags) {
     const newTag = new Tag(tag);
     newTag.save()
   }
-  console.log('Seeded!');
-  res.send('Seeded!')
+  res.send('Seeded tags!')
 })
 
 seedController.get('/seed/tracks', (req, res) => {
@@ -36,9 +33,44 @@ seedController.get('/seed/tracks', (req, res) => {
     const newTrack = new Track(track);
     newTrack.save()
   }
-  console.log('Seeded tags!');
-  res.send('Seeded!');
+  res.send('Seeded tracks!');
 })
 
+seedController.get('/seed/tasktypes', (req, res) => {
+  const taskTypes = [
+    { name: 'Aerobic Endurance', track: ['5a4d09bcf4144cd1267e9865'] },
+    { name: 'Speed', track: ['5a4d09bcf4144cd1267e9865'] },
+    { name: 'Flexibility', track: ['5a4d09bcf4144cd1267e9865'] },
+    { name: 'Muscular Endurance', track: ['5a4d09bcf4144cd1267e9865'] },
+    { name: 'Strength', track: ['5a4d09bcf4144cd1267e9865'] }
+  ]
+
+  for (taskType of taskTypes) {
+    const newTaskType = new TaskType(taskType)
+    newTaskType.save();
+  }
+  res.send('Seeded task types!')
+})
+
+seedController.get('/seed/tasks', (req, res) => {
+  const tasks = [
+    { name: 'Sprints', taskType: ['5a4e5559b1be952784ae2d2b'] },
+    { name: 'Lunges', taskType: ['5a4e5559b1be952784ae2d2e'] },
+    { name: 'Burpees', taskType: ['5a4e5559b1be952784ae2d2a'] },
+    { name: 'Jumping Jacks', taskType: ['5a4e5559b1be952784ae2d2a'] },
+    { name: 'Situps', taskType: ['5a4e5559b1be952784ae2d2d'] },
+    { name: 'Planks', taskType: ['5a4e5559b1be952784ae2d2d'] },
+    { name: 'Toe Touches', taskType: ['5a4e5559b1be952784ae2d2c'] },
+    { name: 'Hip Flexor Stretches', taskType: ['5a4e5559b1be952784ae2d2c'] },
+    { name: 'Pushups', taskType: ['5a4e5559b1be952784ae2d2d'] },
+    { name: 'Squats', taskType: ['5a4e5559b1be952784ae2d2e'] }
+  ]
+
+  for (task of tasks) {
+    const newTask = new Task(task)
+    newTask.save()
+  }
+  res.send('Seeded tasks!');
+})
 
 module.exports = seedController;

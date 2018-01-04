@@ -6,6 +6,7 @@ const completionSchema = new Schema({
   task_id: { type: Schema.Types.ObjectId, ref: 'Task' },
   track_id: { type: Schema.Types.ObjectId, ref: 'Track' },
   user_id: { type: Schema.Types.ObjectId, ref: 'User' },
+  taskType: [{ type: Schema.Types.ObjectId, ref: 'Task Type' }],
   completed: Boolean
 })
 

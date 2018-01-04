@@ -15,7 +15,6 @@ class Dashboard extends Component {
       const percentage = this.props.summary[3]
       const track = this.props.summary[2][0]
       console.log(this.props.summary)
-// EXTRAPOLATE THIS INTO ITS OWN COMPONENT
       return (
           <Summary
             name={name}

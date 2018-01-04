@@ -14,6 +14,7 @@ const tagController = require('./routes/tagController');
 const profileController = require('./routes/profileController');
 const trackController = require('./routes/trackController');
 const summaryController = require('./routes/summaryController');
+const taskController = require('./routes/taskController');
 require('./services/passport');
 
 const app = express();
@@ -51,6 +52,7 @@ app.use('/', tagController);
 app.use('/', profileController);
 app.use('/', trackController);
 app.use('/', summaryController);
+app.use('/', taskController);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
