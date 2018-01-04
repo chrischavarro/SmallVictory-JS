@@ -12,18 +12,19 @@ class Dashboard extends Component {
     if (this.props.summary) {
       const completed = this.props.summary[0].completed.length
       const attempted = this.props.summary[1].attempted.length
-      const percentage = this.props.summary[2]
+      const percentage = this.props.summary[3]
+      const track = this.props.summary[2][0]
       console.log(this.props.summary)
       // console.log(this.props.summary)
-
+// EXTRAPOLATE THIS INTO ITS OWN COMPONENT
       return (
         <div className="row">
         <div className="col s6 offset-s3 center-align" style={{ }}>
-        <h4>Whats up, {name}!</h4>
+        <h4>Whats up, {name}?</h4>
         <h4>Youre currently on a x day streak</h4>
         <h4>Youve completed {completed} out of {attempted} victories</h4>
         <h4>Youve completed {percentage}% of your victories!</h4>
-        <h4>Youre on the x track</h4>
+        <h4>Youre on the {track} track</h4>
         <h4>Ready for todays task?</h4>
         </div>
         </div>
