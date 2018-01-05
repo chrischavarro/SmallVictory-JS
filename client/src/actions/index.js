@@ -15,7 +15,7 @@ export const fetchTags = () => async dispatch => {
 export const createProfile = (values, history) => async dispatch => {
   const res = await axios.post('/api/profile/create', values)
   dispatch({ type: CREATE_PROFILE, payload: res.data });
-  history.push('/select-track')
+  history.push('/select-track');
 }
 
 export const fetchTracks = () =>  async dispatch => {
@@ -34,8 +34,7 @@ export const fetchSummary = () => async dispatch => {
   dispatch({ type: FETCH_SUMMARY, payload: res.data });
 }
 
-export const fetchTask = (history) => async dispatch => {
+export const fetchTask = () => async dispatch => {
   const res = await axios.get('/api/task');
-  // dispatch({ type: FETCH_TASK, payload: res.data })
-  // history.push('/task/new')
+  dispatch({ type: FETCH_TASK, payload: res.data })
 }

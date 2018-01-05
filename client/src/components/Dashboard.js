@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Summary from './Dashboard/Summary'
+
 class Dashboard extends Component {
   componentWillMount() {
       this.props.fetchSummary();
@@ -9,6 +10,8 @@ class Dashboard extends Component {
 
   renderOverview() {
     const {name} = this.props.auth
+    const { history } = this.props
+    console.log('HISTORY', history)
     if (this.props.summary) {
       const completed = this.props.summary[0].completed.length
       const attempted = this.props.summary[1].attempted.length

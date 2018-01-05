@@ -16,7 +16,11 @@ class SelectTrack extends Component {
         return (
           <div className="row" key={track._id}>
             <div key={track._id} style={{ paddingBottom: '10px' }} className="col s4 offset-s4">
-              <button type="button" onClick={() => this.props.selectTrack(track._id, history)} className="btn-large" style={{ textDecoration: 'uppercase', width: '100%', fontSize: '24px' }}>
+              <button type="button"
+                onClick={() => this.props.selectTrack(track._id, history)}
+                className="btn-large"
+                style={{ textDecoration: 'uppercase', width: '100%', fontSize: '24px' }}
+              >
                 {track.name}
               </button>
             </div>

@@ -5,6 +5,7 @@ import tagReducer from './tagReducer';
 import profileReducer from './profileReducer';
 import trackReducer from './trackReducer';
 import summaryReducer from './summaryReducer';
+import taskReducer from './taskReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   tags: tagReducer,
   profile: profileReducer,
   tracks: trackReducer,
-  summary: summaryReducer
+  summary: summaryReducer,
+  task: taskReducer
 });

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Home from './components/Home/Home';
 import Header from './components/Header';
 import SelectTrack from './components/Track/SelectTrack';
+import TaskNew from './components/Tasks/TaskNew';
 import * as actions from './actions';
 
 class App extends Component {
@@ -16,10 +17,13 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <div >
+          <div>
             <Header />
-            <Route exact path="/" component={Home} />
-            <Route path="/select-track" component={SelectTrack} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/tasks/new" component={TaskNew} />
+              <Route path="/select-track" component={SelectTrack} />
+            </Switch>
           </div>
         </BrowserRouter>
       </div>
