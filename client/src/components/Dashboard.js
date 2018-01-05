@@ -10,8 +10,6 @@ class Dashboard extends Component {
 
   renderOverview() {
     const {name} = this.props.auth
-    const { history } = this.props
-    console.log('HISTORY', history)
     if (this.props.summary) {
       const completed = this.props.summary[0].completed.length
       const attempted = this.props.summary[1].attempted.length
