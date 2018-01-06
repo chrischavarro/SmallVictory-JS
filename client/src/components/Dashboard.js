@@ -31,34 +31,35 @@ class Dashboard extends Component {
   }
 
   renderBreakdown() {
-    const labelArray = []
-    const dataArray = []
-    if (this.props.chartData) {
-      const { chartData } = this.props
-      console.log('CHART DATA', Object.keys(chartData))
-      chartData.forEach((type) => {
-        console.log('TYPE', type)
-        labelArray.push(Object.keys(type).toString())
-        dataArray.push(parseInt(Object.values(type).toString()))
-      })
-      console.log('LABEL ARRAY', labelArray)
-      console.log('DATA ARRAY', dataArray)
-
-
-    }
-    const data = {
-      labels: labelArray,
-      datasets: [{
-        data: dataArray,
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
-      }]
-    }
-    return (
-      <TaskBreakdown
-        breakdownData={data}
-      />
-    )
+    console.log(this.props.chartData)
+    // const labelArray = []
+    // const dataArray = []
+    // if (this.props.chartData) {
+    //   const { chartData } = this.props
+    //   console.log('CHART DATA', Object.keys(chartData))
+    //   chartData.forEach((type) => {
+    //     console.log('TYPE', type)
+    //     labelArray.push(Object.keys(type).toString())
+    //     dataArray.push(parseInt(Object.values(type).toString()))
+    //   })
+    //   console.log('LABEL ARRAY', labelArray)
+    //   console.log('DATA ARRAY', dataArray)
+    //
+    //
+    // }
+    // const data = {
+    //   labels: labelArray,
+    //   datasets: [{
+    //     data: dataArray,
+    //     backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
+    //     hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
+    //   }]
+    // }
+    // return (
+    //   <TaskBreakdown
+    //     breakdownData={data}
+    //   />
+    // )
   }
 
   render() {
