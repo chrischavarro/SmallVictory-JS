@@ -5,3 +5,4 @@ export const FETCH_TRACKS = 'fetch_tracks';
 export const SELECT_TRACK = 'select_track';
 export const FETCH_SUMMARY = 'fetch_summary';
 export const FETCH_TASK = 'fetch_task';
+export const FAILED_TASK = 'failed_task';

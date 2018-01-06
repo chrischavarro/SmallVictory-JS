@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import ReactCountdownClock from 'react-countdown-clock';
+import { withRouter } from 'react-router'
 
 class TaskNew extends Component {
   constructor(props) {
@@ -10,8 +11,6 @@ class TaskNew extends Component {
     this.state = {
       taskStarted: false
     };
-
-    // this.startedTask = this.startedTask.bind(this);
   }
 
   componentWillMount() {
@@ -44,14 +43,16 @@ class TaskNew extends Component {
       case false:
         return null
       case true:
+        const { task, history } = this.props
         return (
           <div className="row">
             <div className="col s4 offset-s4" style={{ paddingTop: '50px', paddingLeft: '5%' }}>
               <ReactCountdownClock
-              seconds={300}
+              seconds={1}
               alpha={1}
               color="#3C78D8"
               size={400}
+              onComplete={() => this.props.failedTask(task, history)}
               />
             </div>
             <div className="col s12 center-align">
