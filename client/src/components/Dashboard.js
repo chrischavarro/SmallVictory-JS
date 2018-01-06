@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Summary from './Dashboard/Summary'
 import TaskBreakdown from './Dashboard/TaskBreakdown';
+import CompletionRatio from './Dashboard/CompletionRatio';
 
 class Dashboard extends Component {
   componentWillMount() {
       this.props.fetchSummary();
       this.props.fetchChartData();
+      this.props.fetchRadarData();
   }
 
   renderOverview() {
@@ -31,7 +33,7 @@ class Dashboard extends Component {
   }
 
   renderBreakdown() {
-    console.log(this.props.chartData)
+    // console.log(this.props.chartData)
     const labelArray = []
     const dataArray = []
     if (this.props.chartData) {
@@ -45,7 +47,7 @@ class Dashboard extends Component {
       // console.log('LABEL ARRAY', labelArray)
       // console.log('DATA ARRAY', dataArray)
     }
-    const data = {
+    var data = {
       labels: labelArray,
       datasets: [{
         data: dataArray,
@@ -60,6 +62,52 @@ class Dashboard extends Component {
     )
   }
 
+  renderCompletionRatio() {
+    console.log('RADAR DATA', this.props.radarData)
+    const attemptedLabelArray = []
+    // const completedLabelArray = []
+    const attemptedDataArray = []
+    const completedDataArray = []
+    if (this.props.radarData) {
+      const { radarData } = this.props;
+      Object.keys(radarData[0]).forEach((type) => {
+        attemptedLabelArray.push(type)
+      })
+      // Object.keys(radarData[1]).forEach((type) => {
+      //   completedLabelArray.push(type)
+      // })
+      Object.values(radarData[0]).forEach((type) => {
+        attemptedDataArray.push(type)
+      })
+      Object.values(radarData[1]).forEach((type) => {
+        completedDataArray.push(type)
+      })
+      console.log('TOTAL LABELS', attemptedLabelArray)
+    }
+    var radarData = {
+      labels: attemptedLabelArray,
+      datasets: [
+        {
+          label: 'Completed',
+          data: completedDataArray,
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
+          hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
+        },
+        {
+          label: 'Attempted',
+          data: attemptedDataArray,
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
+          hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
+        }
+      ]
+    }
+    return (
+      <CompletionRatio
+        radarData={radarData}
+      />
+    )
+  }
+
   render() {
     return (
       <div className="container">
@@ -68,6 +116,7 @@ class Dashboard extends Component {
         </h2>
         {this.renderOverview()}
         {this.renderBreakdown()}
+        {this.renderCompletionRatio()}
       </div>
     )
   }
@@ -77,7 +126,8 @@ function mapStateToProps(state) {
   return {
     auth: state.auth,
     summary: state.summary,
-    chartData: state.chartData
+    chartData: state.chartData,
+    radarData: state.radarData
   }
 }
 

@@ -16,21 +16,6 @@ chartController.get('/api/chart_data', (req, res) => {
     .populate('taskType')
     .exec((err, completions) => {
       if (err) { console.log(err) }
-      // console.log('COMPLETIONS', completions[0])
-      // for (let i=0; i < completions.length; i++) {
-      //   console.log('FOR LOOP', completions[i].taskType[0].name)
-      //   if (doughnutLabels.includes(completions[i].taskType[0].name)) {
-      //     console.log('REPEAT COMPLETION')
-      //
-      //     // doughnutLabels[i][labell]
-      //   } else {
-      //     var label = completions[i].taskType[0].name
-      //     var unique = {}
-      //     unique[label] = 1
-      //     doughnutLabels.push(unique)
-      //     console.log('INCREMENT TEST', doughnutLabels[i][label] += 1)
-      //   }
-      // }
       completions.sort((a,b) => a.taskType[0].name.localeCompare(b.taskType[0].name))
       // completions.reverse().forEach((completion) => {
       //   // console.log(completion.taskType[0].name)
@@ -49,32 +34,6 @@ chartController.get('/api/chart_data', (req, res) => {
       //   console.log('DATA TEST', dataTest)
       // })
 
-      // completions.reverse().forEach((completion) => {
-      //   var labelCheck = completion.taskType[0].name
-      //   var uniqueCheck = {}
-      //   uniqueCheck[labelCheck] = 1
-      //   console.log('INITIAL LABEL ARRAY', doughnutLabels)
-      //   // console.log('UNIQUE TASK NAME', completion.taskType[0].name)
-      //   // if (doughnutLabels.includes(uniqueCheck)) {
-      //   //   console.log('ALREADY TAKEN')
-      //   // }
-      //   // else {
-      //     var label = completion.taskType[0].name
-      //     var unique = {}
-      //     unique[label] = 1
-      //     console.log('UNIQUE?', doughnutLabels.includes(unique), doughnutLabels.indexOf(unique))
-      //     if (!doughnutLabels.includes(unique)) {
-      //       doughnutLabels.push(unique)
-      //     } else {
-      //       console.log('DUPLICATE')
-      //     }
-      //     // console.log('TEST', unique)
-      //     // console.log(doughnutLabels.indexOf(label))
-      //     // console.log(completion.taskType[0].name)
-      //     // console.log('KEY TEST', Object.keys(unique))
-      //   // }
-      // })
-
       var result = new Map();
       completions.forEach((completion) => {
         var labelName = completion.taskType[0].name
@@ -83,7 +42,6 @@ chartController.get('/api/chart_data', (req, res) => {
         } else {
           result.set(labelName, 1)
         }
-
       })
 
       const mapToObj = ( aMap => {
@@ -91,16 +49,53 @@ chartController.get('/api/chart_data', (req, res) => {
         aMap.forEach((v,k) => { obj[k] = v});
         return obj
       })
-      console.log(mapToObj(result))
-      objResults = mapToObj(result)
 
+      objResults = mapToObj(result)
       doughnutLabels.push(result.keys())
-      // console.log(result.keys())
-      // console.log('DONUT', doughnutLabels)
-      // console.log('INCREMENT SOLUTION', doughnutLabels[0]['Strength'])
-      // console.log('END LABEL ARRAY', doughnutLabels)
-      // console.log('LABEL KEYS', Object.keys(doughnutLabels))
       res.send(objResults)
+    })
+})
+
+chartController.get('/api/radar_data', (req, res) => {
+  console.log('RADAR CONTROLLER CONTROLLER')
+  const userId = req.user._id
+  Completion.find({ user_id: { $in: userId }})
+    .populate('taskType')
+    .exec((err, completions) => {
+      completions.sort((a,b) => a.taskType[0].name.localeCompare(b.taskType[0].name))
+      var completedTasks = completions.filter(completion => completion.completed == true)
+      var radarData = []
+      var attemptedResult = new Map();
+      var completedResult = new Map();
+
+      completedTasks.forEach((completion) => {
+        var labelName = completion.taskType[0].name
+        if (completedResult.get(labelName)) {
+          completedResult.set(labelName, completedResult.get(labelName) +1)
+        } else {
+          completedResult.set(labelName, 1)
+        }
+      })
+
+      completions.forEach((completion) => {
+        var labelName = completion.taskType[0].name
+        if (attemptedResult.get(labelName)) {
+          attemptedResult.set(labelName, attemptedResult.get(labelName) + 1)
+        } else {
+          attemptedResult.set(labelName, 1)
+        }
+      })
+
+      const mapToObj = ( aMap => {
+        let obj = {};
+        aMap.forEach((v,k) => { obj[k] = v});
+        return obj
+      })
+      // console.log('ATTEMPTED RESULT', attemptedResult)
+      // console.log('COMPLETED RESULT', completedResult)
+      radarData.push(mapToObj(attemptedResult))
+      radarData.push(mapToObj(completedResult))
+      res.send(radarData)
     })
 })
 

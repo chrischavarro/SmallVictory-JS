@@ -7,6 +7,7 @@ import trackReducer from './trackReducer';
 import summaryReducer from './summaryReducer';
 import taskReducer from './taskReducer';
 import chartReducer from './chartReducer';
+import radarReducer from './radarReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
   tracks: trackReducer,
   summary: summaryReducer,
   task: taskReducer,
-  chartData: chartReducer
+  chartData: chartReducer,
+  radarData: radarReducer
 });
