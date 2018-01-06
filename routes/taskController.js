@@ -35,12 +35,10 @@ taskController.get('/api/task', (req, res) => {
 
 // Executed on timer end, pushes failed task to user's profile
 taskController.post('/api/task/failed', (req, res) => {
-  console.log('Response body', req.body)
   const { profile, _id } = req.user;
-  const count = req.body[1]
-  const task_id = req.body[0]._id
-  const taskType = req.body[0].taskType[0]
-  // console.log('Task controller response!', taskType)
+  const count = req.body[1];
+  const task_id = req.body[0]._id;
+  const taskType = req.body[0].taskType[0];
 
   Profile.findById(profile)
     .exec((err, foundProfile) => {
@@ -63,4 +61,30 @@ taskController.post('/api/task/failed', (req, res) => {
       })
     })
 })
+
+taskController.post('/api/task/completed', (req, res) => {
+  const { profile, _id } = req.user;
+  const count = req.body[1];
+  const task_id = req.body[0]._id;
+  const taskType = req.body[0].taskType[0];
+
+  Profile.findById(profile)
+    .exec((err, foundProfile) => {
+      const track_id = foundProfile.tracks[0]
+      const newCompletion = new Completion({
+        count,
+        task_id,
+        track_id,
+        user_id: _id,
+        taskType,
+        completed: true
+      })
+
+      newCompletion.save((err, completion) => {
+        if (err) { console.log(err) }
+        res.send('Task completed!')
+      })
+    })
+})
+
 module.exports = taskController;

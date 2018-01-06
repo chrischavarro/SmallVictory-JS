@@ -48,7 +48,7 @@ class TaskNew extends Component {
           <div className="row">
             <div className="col s4 offset-s4" style={{ paddingTop: '50px', paddingLeft: '5%' }}>
               <ReactCountdownClock
-              seconds={1}
+              seconds={10}
               alpha={1}
               color="#3C78D8"
               size={400}
@@ -56,7 +56,11 @@ class TaskNew extends Component {
               />
             </div>
             <div className="col s12 center-align">
-              <button className="btn-large center-align" style={{ backgroundColor: '#3C78D8', width: '25%', fontSize: '36px', height: '80px', marginTop: '40px' }} >
+              <button
+                className="btn-large center-align"
+                style={{ backgroundColor: '#3C78D8', width: '25%', fontSize: '36px', height: '80px', marginTop: '40px' }}
+                onClick={() => this.props.completedTask(task, history)}
+              >
                 Finished
               </button>
             </div>

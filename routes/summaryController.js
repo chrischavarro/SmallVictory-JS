@@ -13,20 +13,22 @@ summaryController.get('/api/summary', (req, res) => {
   const trackList = [];
   Completion.find({ user_id: userId })
     .exec((err, completions) => {
-      // console.log('Completions found', completions.length)
       console.log('COMPLETIONS', completions)
       if (completions.length > 0) {
-        var percentage = (completed/attempted) * 100;
         completions.forEach((completion) => {
           if (completion.completed) {
             completed += 1
           }
           attempted += 1
         })
-        console.log('ATTEMPTED', attempted)
-      }
-      else {
-        var percentage = 0;
+
+        if (completions.length > 1) {
+          var percentage = Math.floor((completed/attempted) * 100);
+          console.log('PERCENTAGE', percentage)
+        }
+        else {
+          var percentage = 0;
+        }
       }
       Profile.findById(profile)
       .populate('tracks')

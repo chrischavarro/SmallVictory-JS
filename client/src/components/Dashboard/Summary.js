@@ -16,14 +16,14 @@ class Summary extends Component {
         <h4>{`You've completed ${percentage}% of your victories!`}</h4>
         <h4>{`You're on the ${track} track`}</h4>
         <h4>{`Ready for today's task?`}</h4>
-        <button
-          className="btn-large"
-          type="button"
-        >
-          <Link to="/tasks/new" style={{ textDecoration: 'none', color: 'white' }}>
-            Lets Go!
-          </Link>
-        </button>
+        <Link to="/tasks/new" style={{ textDecoration: 'none', color: 'white' }}>
+          <button
+            className="btn-large"
+            type="button"
+          >
+              Lets Go!
+          </button>
+        </Link>
         </div>
       </div>
     )
