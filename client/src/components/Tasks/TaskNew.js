@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import ReactCountdownClock from 'react-countdown-clock';
 
 class TaskNew extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      taskStarted: false
+    };
+
+    // this.startedTask = this.startedTask.bind(this);
+  }
+
   componentWillMount() {
     this.props.fetchTask()
   }
@@ -12,11 +23,41 @@ class TaskNew extends Component {
       const count = this.props.task[1]
       const task = this.props.task[0].name
       return (
-        <div className="col s6 offset-s3 center-align">
-        <h1>{"Here's your task for today"}</h1>
-        <h2>{`Do ${count} ${task}`}</h2>
+        <div className="col s6 offset-s3 center-align" style={{ }}>
+          <h1>{"Here's your task for today"}</h1>
+          <h2>{`Do ${count} ${task}`}</h2>
+          <button
+            className="btn-large"
+            type="button"
+            style={{ width: '40%', fontSize: '36px', height: '80px', backgroundColor: '#3C78D8' }}
+            onClick={() => this.setState({ taskStarted: true })}
+          >
+            {"START"}
+          </button>
         </div>
       )
+    }
+  }
+
+  startTimer() {
+    switch (this.state.taskStarted) {
+      case false:
+        return null
+      case true:
+        return (
+          <div className="row">
+            <div className="col s4 offset-s4 center-align" style={{ paddingTop: '50px' }}>
+              <ReactCountdownClock
+              seconds={300}
+              alpha={1}
+              color="#3C78D8"
+              />
+              <button className="btn-large" style={{ backgroundColor: '#3C78D8', width: '50%', fontSize: '36px', height: '80px' }} >
+                Finished
+              </button>
+            </div>
+          </div>
+        )
     }
   }
 
@@ -25,6 +66,7 @@ class TaskNew extends Component {
     return (
       <div className="row" style={{ marginTop: "5%" }}>
         {this.renderTask()}
+        {this.startTimer()}
       </div>
     )
   }
