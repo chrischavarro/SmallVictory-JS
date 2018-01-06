@@ -85,13 +85,22 @@ chartController.get('/api/chart_data', (req, res) => {
         }
 
       })
+
+      const mapToObj = ( aMap => {
+        let obj = {};
+        aMap.forEach((v,k) => { obj[k] = v});
+        return obj
+      })
+      console.log(mapToObj(result))
+      objResults = mapToObj(result)
+
       doughnutLabels.push(result.keys())
-      console.log(result.keys())
-      console.log('DONUT', doughnutLabels)
+      // console.log(result.keys())
+      // console.log('DONUT', doughnutLabels)
       // console.log('INCREMENT SOLUTION', doughnutLabels[0]['Strength'])
       // console.log('END LABEL ARRAY', doughnutLabels)
       // console.log('LABEL KEYS', Object.keys(doughnutLabels))
-      res.send(result)
+      res.send(objResults)
     })
 })
 
