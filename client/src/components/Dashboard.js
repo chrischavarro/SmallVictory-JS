@@ -11,8 +11,8 @@ class Dashboard extends Component {
   renderOverview() {
     const {name} = this.props.auth
     if (this.props.summary) {
-      const completed = this.props.summary[0].completed.length
-      const attempted = this.props.summary[1].attempted.length
+      const completed = this.props.summary[0].completed
+      const attempted = this.props.summary[1].attempted
       const percentage = this.props.summary[3]
       const track = this.props.summary[2][0]
       console.log(this.props.summary)
