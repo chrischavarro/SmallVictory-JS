@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_TAGS, CREATE_PROFILE, FETCH_TRACKS, SELECT_TRACK, FETCH_SUMMARY, FETCH_TASK, FAILED_TASK, COMPLETED_TASK } from './types';
+import { FETCH_USER, FETCH_TAGS, CREATE_PROFILE, FETCH_TRACKS, SELECT_TRACK, FETCH_SUMMARY, FETCH_TASK, FAILED_TASK, COMPLETED_TASK, FETCH_CHART_DATA } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -49,4 +49,9 @@ export const completedTask = (task, history) => async dispatch => {
   const res = await axios.post('/api/task/completed', task);
   dispatch({ type: COMPLETED_TASK, payload: res.data });
   history.push('/');
+}
+
+export const fetchChartData = () => async dispatch => {
+  const res = await axios.get('/api/chart_data');
+  dispatch({ type: FETCH_CHART_DATA, payload: res.data });
 }

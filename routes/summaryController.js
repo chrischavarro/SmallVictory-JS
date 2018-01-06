@@ -13,7 +13,7 @@ summaryController.get('/api/summary', (req, res) => {
   const trackList = [];
   Completion.find({ user_id: userId })
     .exec((err, completions) => {
-      console.log('COMPLETIONS', completions)
+      // console.log('COMPLETIONS', completions)
       if (completions.length > 0) {
         completions.forEach((completion) => {
           if (completion.completed) {
@@ -24,7 +24,7 @@ summaryController.get('/api/summary', (req, res) => {
 
         if (completions.length > 1) {
           var percentage = Math.floor((completed/attempted) * 100);
-          console.log('PERCENTAGE', percentage)
+          // console.log('PERCENTAGE', percentage)
         }
         else {
           var percentage = 0;

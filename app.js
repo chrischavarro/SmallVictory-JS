@@ -4,10 +4,10 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const logger = require('morgan');
 const session = require('express-session');
-
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys')
+
 const authController = require('./routes/authController');
 const seedController = require('./routes/seedController');
 const tagController = require('./routes/tagController');
@@ -15,8 +15,9 @@ const profileController = require('./routes/profileController');
 const trackController = require('./routes/trackController');
 const summaryController = require('./routes/summaryController');
 const taskController = require('./routes/taskController');
-require('./services/passport');
+const chartController = require('./routes/chartController');
 
+require('./services/passport');
 const app = express();
 
 if (process.env.NODE_ENV === 'production') {
@@ -53,6 +54,7 @@ app.use('/', profileController);
 app.use('/', trackController);
 app.use('/', summaryController);
 app.use('/', taskController);
+app.use('/', chartController);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

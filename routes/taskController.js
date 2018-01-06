@@ -33,7 +33,8 @@ taskController.get('/api/task', (req, res) => {
     })
 })
 
-// Executed on timer end, pushes failed task to user's profile
+// Executed on task's timer end
+// CAN THIS BE REDUCED TO ONE FUNCTION FOR SUCCESS AND FAILURE? 
 taskController.post('/api/task/failed', (req, res) => {
   const { profile, _id } = req.user;
   const count = req.body[1];
@@ -62,6 +63,7 @@ taskController.post('/api/task/failed', (req, res) => {
     })
 })
 
+// Executed on user marking task as completed
 taskController.post('/api/task/completed', (req, res) => {
   const { profile, _id } = req.user;
   const count = req.body[1];

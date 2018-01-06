@@ -6,6 +6,7 @@ import profileReducer from './profileReducer';
 import trackReducer from './trackReducer';
 import summaryReducer from './summaryReducer';
 import taskReducer from './taskReducer';
+import chartReducer from './chartReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   profile: profileReducer,
   tracks: trackReducer,
   summary: summaryReducer,
-  task: taskReducer
+  task: taskReducer,
+  chartData: chartReducer
 });

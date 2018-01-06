@@ -7,3 +7,4 @@ export const FETCH_SUMMARY = 'fetch_summary';
 export const FETCH_TASK = 'fetch_task';
 export const FAILED_TASK = 'failed_task';
 export const COMPLETED_TASK = 'completed_task';
+export const FETCH_CHART_DATA = 'fetch_chart_data';
