@@ -4,12 +4,14 @@ import * as actions from '../actions';
 import Summary from './Dashboard/Summary'
 import TaskBreakdown from './Dashboard/TaskBreakdown';
 import CompletionRatio from './Dashboard/CompletionRatio';
+import VictoryTotal from './Dashboard/VictoryTotal';
 
 class Dashboard extends Component {
   componentWillMount() {
       this.props.fetchSummary();
       this.props.fetchChartData();
       this.props.fetchRadarData();
+      this.props.fetchVictoryData();
   }
 
   renderOverview() {
@@ -33,7 +35,7 @@ class Dashboard extends Component {
   }
 
   renderBreakdown() {
-    // console.log(this.props.chartData)
+    // console.log('CHART DATA', this.props.chartData)
     const labelArray = []
     const dataArray = []
     if (this.props.chartData) {
@@ -44,8 +46,6 @@ class Dashboard extends Component {
       Object.values(chartData).forEach((type) => {
         dataArray.push(type)
       })
-      // console.log('LABEL ARRAY', labelArray)
-      // console.log('DATA ARRAY', dataArray)
     }
     var data = {
       labels: labelArray,
@@ -63,9 +63,8 @@ class Dashboard extends Component {
   }
 
   renderCompletionRatio() {
-    console.log('RADAR DATA', this.props.radarData)
+    // console.log('RADAR DATA', this.props.radarData)
     const attemptedLabelArray = []
-    // const completedLabelArray = []
     const attemptedDataArray = []
     const completedDataArray = []
     if (this.props.radarData) {
@@ -73,16 +72,12 @@ class Dashboard extends Component {
       Object.keys(radarData[0]).forEach((type) => {
         attemptedLabelArray.push(type)
       })
-      // Object.keys(radarData[1]).forEach((type) => {
-      //   completedLabelArray.push(type)
-      // })
       Object.values(radarData[0]).forEach((type) => {
         attemptedDataArray.push(type)
       })
       Object.values(radarData[1]).forEach((type) => {
         completedDataArray.push(type)
       })
-      console.log('TOTAL LABELS', attemptedLabelArray)
     }
     var radarData = {
       labels: attemptedLabelArray,
@@ -109,6 +104,34 @@ class Dashboard extends Component {
     )
   }
 
+  renderVictoryTotal() {
+    console.log('VICTORY DATA', this.props.victoryData)
+    var victoryLabels = '';
+    var victoryGraphData = ''
+    if (this.props.victoryData) {
+      const { victoryData } = this.props
+      var victoryLabels = Object.keys(victoryData)
+      var victoryGraphData = Object.values(victoryData)
+      // console.log('VICTORY LABELS', victoryLabels)
+      // console.log('VICTORY DATA', victoryGraphData)
+    }
+
+    var victoryGraphData = {
+      labels: victoryLabels,
+      datasets: [{
+        data: victoryGraphData,
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
+        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
+      }]
+    }
+
+    return (
+      <VictoryTotal
+        victoryData={victoryGraphData}
+      />
+    )
+  }
+
   render() {
     return (
       <div className="container">
@@ -118,6 +141,7 @@ class Dashboard extends Component {
         {this.renderOverview()}
         {this.renderBreakdown()}
         {this.renderCompletionRatio()}
+        {this.renderVictoryTotal()}
       </div>
     )
   }
@@ -128,7 +152,8 @@ function mapStateToProps(state) {
     auth: state.auth,
     summary: state.summary,
     chartData: state.chartData,
-    radarData: state.radarData
+    radarData: state.radarData,
+    victoryData: state.victoryData
   }
 }
 

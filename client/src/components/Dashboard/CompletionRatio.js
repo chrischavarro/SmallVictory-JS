@@ -8,16 +8,18 @@ class CompletionRatio extends Component {
         <div className="col s6 offset-s3 center-align" style={{ }}>
           <h2>{"Here's how you've done with your tasks"}</h2>
           <Radar
-            width={300}
+            width={200}
             data={this.props.radarData}
-            options={{
+            options={
+              {
               scale: {
                   ticks: {
                     beginAtZero: true,
                     stepSize: 1
                   }
               }
-            }}
+            }
+          }
           />
         </div>
       </div>

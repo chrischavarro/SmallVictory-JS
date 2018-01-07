@@ -17,23 +17,6 @@ chartController.get('/api/chart_data', (req, res) => {
     .exec((err, completions) => {
       if (err) { console.log(err) }
       completions.sort((a,b) => a.taskType[0].name.localeCompare(b.taskType[0].name))
-      // completions.reverse().forEach((completion) => {
-      //   // console.log(completion.taskType[0].name)
-      //   var { name } = completion.taskType[0]
-      //   console.log(name)
-      //   var i = 1
-      //   if (!labelTest.includes(name)) {
-      //     labelTest.push(name)
-      //     dataTest.push(i)
-      //   } else {
-      //     i += 1
-      //     dataTest.push(i)
-      //     console.log('Repeat!')
-      //   }
-      //   console.log('LABEL TEST', labelTest)
-      //   console.log('DATA TEST', dataTest)
-      // })
-
       var result = new Map();
       completions.forEach((completion) => {
         var labelName = completion.taskType[0].name
@@ -57,7 +40,6 @@ chartController.get('/api/chart_data', (req, res) => {
 })
 
 chartController.get('/api/radar_data', (req, res) => {
-  console.log('RADAR CONTROLLER CONTROLLER')
   const userId = req.user._id
   Completion.find({ user_id: { $in: userId }})
     .populate('taskType')
@@ -91,11 +73,39 @@ chartController.get('/api/radar_data', (req, res) => {
         aMap.forEach((v,k) => { obj[k] = v});
         return obj
       })
-      // console.log('ATTEMPTED RESULT', attemptedResult)
-      // console.log('COMPLETED RESULT', completedResult)
       radarData.push(mapToObj(attemptedResult))
       radarData.push(mapToObj(completedResult))
       res.send(radarData)
+    })
+})
+const mapToObj = ( aMap => {
+  let obj = {};
+  aMap.forEach((v,k) => { obj[k] = v});
+  return obj
+})
+
+chartController.get('/api/victory_data', (req, res) => {
+  const userId = req.user._id;
+  // try and select only the task name
+  Completion.find({ user_id: { $in: userId }})
+    .populate('task_id')
+    .exec((err, completions) => {
+      var completionNameArray = []
+      completions.forEach((completion) => {
+        completionNameArray.push(completion.task_id.name)
+      })
+
+      var completionMap = new Map();
+      completionNameArray.forEach((completionName) => {
+        if (completionMap.get(completionName)) {
+          completionMap.set(completionName, completionMap.get(completionName) + 1)
+        } else {
+          completionMap.set(completionName, 1)
+        }
+      })
+      var completionData = mapToObj(completionMap)
+      console.log('COMPLETION DATA', completionData)
+      res.send(completionData);
     })
 })
 

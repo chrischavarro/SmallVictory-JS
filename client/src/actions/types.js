@@ -9,3 +9,4 @@ export const FAILED_TASK = 'failed_task';
 export const COMPLETED_TASK = 'completed_task';
 export const FETCH_CHART_DATA = 'fetch_chart_data';
 export const FETCH_RADAR_DATA = 'fetch_radar_data';
+export const FETCH_VICTORY_DATA = 'fetch_victory_data';
