@@ -56,8 +56,8 @@ export const fetchChartData = (time) => async dispatch => {
   dispatch({ type: FETCH_CHART_DATA, payload: res.data });
 }
 
-export const fetchRadarData = () => async dispatch => {
-  const res = await axios.get('/api/radar_data');
+export const fetchRadarData = (time) => async dispatch => {
+  const res = await axios.get(`/api/radar_data/${time}`);
   dispatch({ type: FETCH_RADAR_DATA, payload: res.data });
 }
 

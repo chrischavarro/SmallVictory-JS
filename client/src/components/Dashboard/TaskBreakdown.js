@@ -4,9 +4,6 @@ import { Doughnut } from 'react-chartjs-2'
 import * as actions from '../../actions';
 
 class TaskBreakdown extends Component {
-  componentWillMount() {
-
-  }
   render() {
     const labelArray = []
     const dataArray = []
@@ -27,7 +24,7 @@ class TaskBreakdown extends Component {
         hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
       }]
     }
-    console.log(data)
+    // console.log(data)
     var week = '7'
     var month = '30'
     var all_time = '9999'

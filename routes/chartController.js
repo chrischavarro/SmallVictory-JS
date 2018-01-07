@@ -39,9 +39,12 @@ chartController.get('/api/chart_data/:time', (req, res) => {
     })
 })
 
-chartController.get('/api/radar_data', (req, res) => {
-  const userId = req.user._id
-  Completion.find({ user_id: { $in: userId }})
+chartController.get('/api/radar_data/:time', (req, res) => {
+  const userId = req.user._id;
+  const time = req.params.time;
+  var searchRange = ago(time, "days");
+
+  Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange} } ]})
     .populate('taskType')
     .exec((err, completions) => {
       completions.sort((a,b) => a.taskType[0].name.localeCompare(b.taskType[0].name))

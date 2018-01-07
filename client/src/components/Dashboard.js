@@ -11,7 +11,7 @@ class Dashboard extends Component {
     var all_time = 9999
       this.props.fetchSummary();
       this.props.fetchChartData(all_time);
-      this.props.fetchRadarData();
+      this.props.fetchRadarData(all_time);
       this.props.fetchVictoryData();
   }
 
@@ -36,26 +36,6 @@ class Dashboard extends Component {
   }
 
   renderBreakdown() {
-    // console.log('CHART DATA', this.props.chartData)
-    // const labelArray = []
-    // const dataArray = []
-    // if (this.props.chartData) {
-    //   const { chartData } = this.props
-    //   Object.keys(chartData).forEach((type) => {
-    //     labelArray.push(type)
-    //   })
-    //   Object.values(chartData).forEach((type) => {
-    //     dataArray.push(type)
-    //   })
-    // }
-    // var data = {
-    //   labels: labelArray,
-    //   datasets: [{
-    //     data: dataArray,
-    //     backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-    //     hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
-    //   }]
-    // }
     return (
       <TaskBreakdown />
     )
@@ -63,43 +43,41 @@ class Dashboard extends Component {
 
   renderCompletionRatio() {
     // console.log('RADAR DATA', this.props.radarData)
-    const attemptedLabelArray = []
-    const attemptedDataArray = []
-    const completedDataArray = []
-    if (this.props.radarData) {
-      const { radarData } = this.props;
-      Object.keys(radarData[0]).forEach((type) => {
-        attemptedLabelArray.push(type)
-      })
-      Object.values(radarData[0]).forEach((type) => {
-        attemptedDataArray.push(type)
-      })
-      Object.values(radarData[1]).forEach((type) => {
-        completedDataArray.push(type)
-      })
-    }
-    var radarData = {
-      labels: attemptedLabelArray,
-      datasets: [
-        {
-          label: 'Completed',
-          data: completedDataArray,
-          // backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-          backgroundColor: ['#FF6384'],
-          hoverBackgroundColor: ['#36A2EB']
-        },
-        {
-          label: 'Attempted',
-          data: attemptedDataArray,
-          backgroundColor: ['#FFCE56'],
-          hoverBackgroundColor: ['#E7E9ED']
-        }
-      ]
-    }
+    // const attemptedLabelArray = []
+    // const attemptedDataArray = []
+    // const completedDataArray = []
+    // if (this.props.radarData) {
+    //   const { radarData } = this.props;
+    //   Object.keys(radarData[0]).forEach((type) => {
+    //     attemptedLabelArray.push(type)
+    //   })
+    //   Object.values(radarData[0]).forEach((type) => {
+    //     attemptedDataArray.push(type)
+    //   })
+    //   Object.values(radarData[1]).forEach((type) => {
+    //     completedDataArray.push(type)
+    //   })
+    // }
+    // var radarData = {
+    //   labels: attemptedLabelArray,
+    //   datasets: [
+    //     {
+    //       label: 'Completed',
+    //       data: completedDataArray,
+    //       // backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
+    //       backgroundColor: ['#FF6384'],
+    //       hoverBackgroundColor: ['#36A2EB']
+    //     },
+    //     {
+    //       label: 'Attempted',
+    //       data: attemptedDataArray,
+    //       backgroundColor: ['#FFCE56'],
+    //       hoverBackgroundColor: ['#E7E9ED']
+    //     }
+    //   ]
+    // }
     return (
-      <CompletionRatio
-        radarData={radarData}
-      />
+      <CompletionRatio />
     )
   }
 
