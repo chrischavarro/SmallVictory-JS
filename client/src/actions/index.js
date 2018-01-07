@@ -53,7 +53,6 @@ export const completedTask = (task, history) => async dispatch => {
 
 export const fetchChartData = (time) => async dispatch => {
   const res = await axios.get(`/api/chart_data/${time}`);
-  console.log('DATE', time)
   dispatch({ type: FETCH_CHART_DATA, payload: res.data });
 }
 

@@ -4,6 +4,7 @@ const Completion = require('../models/Completion');
 const TaskType = require('../models/TaskType');
 const Task = require('../models/Task');
 const Profile = require('../models/Profile');
+const ago = require('ago');
 
 const mapToObj = ( aMap => {
   let obj = {};
@@ -14,13 +15,11 @@ const mapToObj = ( aMap => {
 chartController.get('/api/chart_data/:time', (req, res) => {
   const userId = req.user._id;
   const time = req.params.time;
-  console.log('TIME PARAM', time)
   var doughnutLabels = [];
   var doughnutData = [];
-  var labelTest = [];
-  var dataTest = [];
-
-  Completion.find({ user_id: { $in: userId }})
+  var searchRange = ago(time, "days")
+  // ago installation checks for created within last x days
+  Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange} } ]})
     .populate('taskType')
     .exec((err, completions) => {
       if (err) { console.log(err) }
@@ -34,10 +33,9 @@ chartController.get('/api/chart_data/:time', (req, res) => {
           result.set(labelName, 1)
         }
       })
-
-      objResults = mapToObj(result)
+      doughnutData = mapToObj(result)
       doughnutLabels.push(result.keys())
-      res.send(objResults)
+      res.send(doughnutData)
     })
 })
 

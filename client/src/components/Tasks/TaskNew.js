@@ -70,7 +70,7 @@ class TaskNew extends Component {
   }
 
   render() {
-    console.log(this.props.task)
+    // console.log(this.props.task)
     return (
       <div className="row" style={{ marginTop: "5%" }}>
         {this.renderTask()}

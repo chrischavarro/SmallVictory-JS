@@ -8,7 +8,7 @@ import VictoryTotal from './Dashboard/VictoryTotal';
 
 class Dashboard extends Component {
   componentWillMount() {
-    var all_time = 'all_time'
+    var all_time = 9999
       this.props.fetchSummary();
       this.props.fetchChartData(all_time);
       this.props.fetchRadarData();
@@ -37,29 +37,27 @@ class Dashboard extends Component {
 
   renderBreakdown() {
     // console.log('CHART DATA', this.props.chartData)
-    const labelArray = []
-    const dataArray = []
-    if (this.props.chartData) {
-      const { chartData } = this.props
-      Object.keys(chartData).forEach((type) => {
-        labelArray.push(type)
-      })
-      Object.values(chartData).forEach((type) => {
-        dataArray.push(type)
-      })
-    }
-    var data = {
-      labels: labelArray,
-      datasets: [{
-        data: dataArray,
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
-      }]
-    }
+    // const labelArray = []
+    // const dataArray = []
+    // if (this.props.chartData) {
+    //   const { chartData } = this.props
+    //   Object.keys(chartData).forEach((type) => {
+    //     labelArray.push(type)
+    //   })
+    //   Object.values(chartData).forEach((type) => {
+    //     dataArray.push(type)
+    //   })
+    // }
+    // var data = {
+    //   labels: labelArray,
+    //   datasets: [{
+    //     data: dataArray,
+    //     backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
+    //     hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
+    //   }]
+    // }
     return (
-      <TaskBreakdown
-        breakdownData={data}
-      />
+      <TaskBreakdown />
     )
   }
 
