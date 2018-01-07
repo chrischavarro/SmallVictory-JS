@@ -8,8 +8,9 @@ import VictoryTotal from './Dashboard/VictoryTotal';
 
 class Dashboard extends Component {
   componentWillMount() {
+    var all_time = 'all_time'
       this.props.fetchSummary();
-      this.props.fetchChartData();
+      this.props.fetchChartData(all_time);
       this.props.fetchRadarData();
       this.props.fetchVictoryData();
   }
@@ -21,7 +22,7 @@ class Dashboard extends Component {
       const attempted = this.props.summary[1].attempted
       const percentage = this.props.summary[3]
       const track = this.props.summary[2][0]
-      console.log(this.props.summary)
+      // console.log(this.props.summary)
       return (
           <Summary
             name={name}
@@ -105,18 +106,18 @@ class Dashboard extends Component {
   }
 
   renderVictoryTotal() {
-    console.log('VICTORY DATA', this.props.victoryData)
+    // console.log('VICTORY DATA', this.props.victoryData)
     var victoryLabels = '';
     var victoryGraphData = ''
     if (this.props.victoryData) {
       const { victoryData } = this.props
-      var victoryLabels = Object.keys(victoryData)
-      var victoryGraphData = Object.values(victoryData)
+       victoryLabels = Object.keys(victoryData)
+       victoryGraphData = Object.values(victoryData)
       // console.log('VICTORY LABELS', victoryLabels)
       // console.log('VICTORY DATA', victoryGraphData)
     }
 
-    var victoryGraphData = {
+     victoryGraphData = {
       labels: victoryLabels,
       datasets: [{
         data: victoryGraphData,

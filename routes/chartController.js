@@ -5,8 +5,16 @@ const TaskType = require('../models/TaskType');
 const Task = require('../models/Task');
 const Profile = require('../models/Profile');
 
-chartController.get('/api/chart_data', (req, res) => {
+const mapToObj = ( aMap => {
+  let obj = {};
+  aMap.forEach((v,k) => { obj[k] = v});
+  return obj
+})
+
+chartController.get('/api/chart_data/:time', (req, res) => {
   const userId = req.user._id;
+  const time = req.params.time;
+  console.log('TIME PARAM', time)
   var doughnutLabels = [];
   var doughnutData = [];
   var labelTest = [];
@@ -25,12 +33,6 @@ chartController.get('/api/chart_data', (req, res) => {
         } else {
           result.set(labelName, 1)
         }
-      })
-
-      const mapToObj = ( aMap => {
-        let obj = {};
-        aMap.forEach((v,k) => { obj[k] = v});
-        return obj
       })
 
       objResults = mapToObj(result)
@@ -68,21 +70,12 @@ chartController.get('/api/radar_data', (req, res) => {
         }
       })
 
-      const mapToObj = ( aMap => {
-        let obj = {};
-        aMap.forEach((v,k) => { obj[k] = v});
-        return obj
-      })
       radarData.push(mapToObj(attemptedResult))
       radarData.push(mapToObj(completedResult))
       res.send(radarData)
     })
 })
-const mapToObj = ( aMap => {
-  let obj = {};
-  aMap.forEach((v,k) => { obj[k] = v});
-  return obj
-})
+
 
 chartController.get('/api/victory_data', (req, res) => {
   const userId = req.user._id;

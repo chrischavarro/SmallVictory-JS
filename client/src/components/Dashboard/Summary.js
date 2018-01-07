@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Summary extends Component {
   render() {
     const { name, completed, attempted, percentage, track } = this.props;
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div className="row">
         <div className="col s6 offset-s3 center-align" style={{ }}>

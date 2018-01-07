@@ -8,7 +8,7 @@ const completionSchema = new Schema({
   user_id: { type: Schema.Types.ObjectId, ref: 'User' },
   taskType: [{ type: Schema.Types.ObjectId, ref: 'TaskType' }],
   completed: Boolean
-})
+}, {timestamps: true})
 
 const Completion = mongoose.model('Completion', completionSchema);
 
