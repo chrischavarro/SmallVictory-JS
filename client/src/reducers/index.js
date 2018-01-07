@@ -9,6 +9,7 @@ import taskReducer from './taskReducer';
 import chartReducer from './chartReducer';
 import radarReducer from './radarReducer';
 import victoryTotalReducer from './victoryTotalReducer';
+import repDataReducer from './repDataReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -20,5 +21,6 @@ export default combineReducers({
   task: taskReducer,
   chartData: chartReducer,
   radarData: radarReducer,
-  victoryData: victoryTotalReducer
+  victoryData: victoryTotalReducer,
+  repData: repDataReducer
 });

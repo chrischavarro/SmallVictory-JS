@@ -70,9 +70,8 @@ chartController.get('/api/radar_data/:time', (req, res) => {
           attemptedResult.set(labelName, 1)
         }
       })
-
-      radarData.push(mapToObj(attemptedResult))
-      radarData.push(mapToObj(completedResult))
+      radarData.push(mapToObj(attemptedResult));
+      radarData.push(mapToObj(completedResult));
       res.send(radarData)
     })
 })
@@ -80,7 +79,7 @@ chartController.get('/api/radar_data/:time', (req, res) => {
 
 chartController.get('/api/victory_data/:time', (req, res) => {
   const userId = req.user._id;
-  const time = req.params.time
+  const time = req.params.time;
   var searchRange = ago(time, "days");
   // try and select only the task name
   Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange} } ]})
@@ -102,6 +101,31 @@ chartController.get('/api/victory_data/:time', (req, res) => {
       var completionData = mapToObj(completionMap)
       // console.log('COMPLETION DATA', completionData)
       res.send(completionData);
+    })
+})
+
+chartController.get('/api/rep_data/:time', (req, res) => {
+  const userId = req.user._id;
+  const time = req.params.time;
+  const fitnessTrack = '5a4d09bcf4144cd1267e9865'
+  const searchRange = ago(time, "days");
+
+  Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange }}, { track_id: fitnessTrack} ]})
+    .populate('task_id')
+    .exec((err, completions) => {
+      const repMap = new Map();
+      completions.forEach((completion) => {
+        let taskName = completion.task_id.name
+        let taskCount = completion.count
+        if (repMap.get(taskName)) {
+          repMap.set(taskName, repMap.get(taskName) + taskCount)
+        } else {
+          repMap.set(taskName, taskCount)
+        }
+      })
+      var repData = mapToObj(repMap)
+      console.log('REP DATA', repData)
+      res.send(repData)
     })
 })
 

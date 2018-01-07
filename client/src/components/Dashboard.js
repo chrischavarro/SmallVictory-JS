@@ -5,6 +5,7 @@ import Summary from './Dashboard/Summary'
 import TaskBreakdown from './Dashboard/TaskBreakdown';
 import CompletionRatio from './Dashboard/CompletionRatio';
 import VictoryTotal from './Dashboard/VictoryTotal';
+import RepTotal from './Dashboard/RepTotal';
 
 class Dashboard extends Component {
   componentWillMount() {
@@ -13,6 +14,7 @@ class Dashboard extends Component {
       this.props.fetchChartData(all_time);
       this.props.fetchRadarData(all_time);
       this.props.fetchVictoryData(all_time);
+      this.props.fetchRepData(all_time);
   }
 
   renderOverview() {
@@ -48,28 +50,14 @@ class Dashboard extends Component {
   }
 
   renderVictoryTotal() {
-    // console.log('VICTORY DATA', this.props.victoryData)
-    // var victoryLabels = '';
-    // var victoryGraphData = ''
-    // if (this.props.victoryData) {
-    //   const { victoryData } = this.props
-    //    victoryLabels = Object.keys(victoryData)
-    //    victoryGraphData = Object.values(victoryData)
-    //   // console.log('VICTORY LABELS', victoryLabels)
-    //   // console.log('VICTORY DATA', victoryGraphData)
-    // }
-    //
-    //  victoryGraphData = {
-    //   labels: victoryLabels,
-    //   datasets: [{
-    //     data: victoryGraphData,
-    //     backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-    //     hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
-    //   }]
-    // }
-
     return (
       <VictoryTotal />
+    )
+  }
+
+  renderRepTotal() {
+    return (
+      <RepTotal />
     )
   }
 
@@ -83,6 +71,7 @@ class Dashboard extends Component {
         {this.renderBreakdown()}
         {this.renderCompletionRatio()}
         {this.renderVictoryTotal()}
+        {this.renderRepTotal()}
       </div>
     )
   }
@@ -91,10 +80,7 @@ class Dashboard extends Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
-    summary: state.summary,
-    chartData: state.chartData,
-    radarData: state.radarData,
-    victoryData: state.victoryData
+    summary: state.summary
   }
 }
 

@@ -34,7 +34,7 @@ taskController.get('/api/task', (req, res) => {
 })
 
 // Executed on task's timer end
-// CAN THIS BE REDUCED TO ONE FUNCTION FOR SUCCESS AND FAILURE? 
+// CAN THIS BE REDUCED TO ONE FUNCTION FOR SUCCESS AND FAILURE?
 taskController.post('/api/task/failed', (req, res) => {
   const { profile, _id } = req.user;
   const count = req.body[1];
@@ -54,10 +54,10 @@ taskController.post('/api/task/failed', (req, res) => {
         completed: false
       })
 
-      console.log('COMPLETION CREATED', newCompletion)
+      // console.log('COMPLETION CREATED', newCompletion)
       newCompletion.save((err, completion) => {
         if (err) { console.log(err) }
-        console.log('Poll option created!', completion)
+        // console.log('Poll option created!', completion)
         res.send('Task failed')
       })
     })

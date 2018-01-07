@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_TAGS, CREATE_PROFILE, FETCH_TRACKS, SELECT_TRACK, FETCH_SUMMARY, FETCH_TASK, FAILED_TASK, COMPLETED_TASK, FETCH_CHART_DATA, FETCH_RADAR_DATA, FETCH_VICTORY_DATA } from './types';
+import { FETCH_USER, FETCH_TAGS, CREATE_PROFILE, FETCH_TRACKS,
+  SELECT_TRACK, FETCH_SUMMARY, FETCH_TASK, FAILED_TASK, COMPLETED_TASK,
+  FETCH_CHART_DATA, FETCH_RADAR_DATA, FETCH_VICTORY_DATA, FETCH_REP_DATA } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -64,4 +66,9 @@ export const fetchRadarData = (time) => async dispatch => {
 export const fetchVictoryData = (time) => async dispatch => {
   const res = await axios.get(`/api/victory_data/${time}`);
   dispatch({ type: FETCH_VICTORY_DATA, payload: res.data })
+}
+
+export const fetchRepData = (time) => async dispatch => {
+  const res = await axios.get(`/api/rep_data/${time}`);
+  dispatch({ type: FETCH_REP_DATA, payload: res.data })
 }
