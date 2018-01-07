@@ -1,16 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Bar } from 'react-chartjs-2'
+import * as actions from '../../actions';
 
 class VictoryTotal extends Component {
   render() {
+    var victoryLabels = '';
+    var victoryGraphData = ''
+    if (this.props.victoryData) {
+      const { victoryData } = this.props
+       victoryLabels = Object.keys(victoryData)
+       victoryGraphData = Object.values(victoryData)
+      // console.log('VICTORY LABELS', victoryLabels)
+      // console.log('VICTORY DATA', victoryGraphData)
+    }
+     victoryGraphData = {
+      labels: victoryLabels,
+      datasets: [{
+        data: victoryGraphData,
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
+        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
+      }]
+    }
+    var week = '7'
+    var month = '30'
+    var all_time = '9999'
+
     return (
       <div className="row">
         <div className="col s6 offset-s3 center-align" style={{ }}>
           <h2>{"Here's how your victories have added up"}</h2>
+          <button className="btn" onClick={() => this.props.fetchVictoryData(week)}>This Week</button>
+          <button className="btn" onClick={() => this.props.fetchVictoryData(month)}>This Month</button>
+          <button className="btn" onClick={() => this.props.fetchVictoryData(all_time)}>All Time</button>
           <Bar
             width={200}
-            data={this.props.victoryData}
+            data={victoryGraphData}
             options={{
               legend: {
                 display: false
@@ -32,4 +57,10 @@ class VictoryTotal extends Component {
   }
 }
 
-export default VictoryTotal;
+function mapStateToProps(state) {
+  return {
+    victoryData: state.victoryData
+  }
+}
+
+export default connect(mapStateToProps, actions)(VictoryTotal)

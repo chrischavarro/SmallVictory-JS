@@ -61,7 +61,7 @@ export const fetchRadarData = (time) => async dispatch => {
   dispatch({ type: FETCH_RADAR_DATA, payload: res.data });
 }
 
-export const fetchVictoryData = () => async dispatch => {
-  const res = await axios.get('/api/victory_data');
+export const fetchVictoryData = (time) => async dispatch => {
+  const res = await axios.get(`/api/victory_data/${time}`);
   dispatch({ type: FETCH_VICTORY_DATA, payload: res.data })
 }

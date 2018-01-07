@@ -41,7 +41,7 @@ class CompletionRatio extends Component {
     var week = '7'
     var month = '30'
     var all_time = '9999'
-    console.log(radarData)
+    // console.log(radarData)
     return (
       <div className="row">
         <div className="col s6 offset-s3 center-align" style={{ }}>

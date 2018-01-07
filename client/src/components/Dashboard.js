@@ -12,7 +12,7 @@ class Dashboard extends Component {
       this.props.fetchSummary();
       this.props.fetchChartData(all_time);
       this.props.fetchRadarData(all_time);
-      this.props.fetchVictoryData();
+      this.props.fetchVictoryData(all_time);
   }
 
   renderOverview() {
@@ -42,40 +42,6 @@ class Dashboard extends Component {
   }
 
   renderCompletionRatio() {
-    // console.log('RADAR DATA', this.props.radarData)
-    // const attemptedLabelArray = []
-    // const attemptedDataArray = []
-    // const completedDataArray = []
-    // if (this.props.radarData) {
-    //   const { radarData } = this.props;
-    //   Object.keys(radarData[0]).forEach((type) => {
-    //     attemptedLabelArray.push(type)
-    //   })
-    //   Object.values(radarData[0]).forEach((type) => {
-    //     attemptedDataArray.push(type)
-    //   })
-    //   Object.values(radarData[1]).forEach((type) => {
-    //     completedDataArray.push(type)
-    //   })
-    // }
-    // var radarData = {
-    //   labels: attemptedLabelArray,
-    //   datasets: [
-    //     {
-    //       label: 'Completed',
-    //       data: completedDataArray,
-    //       // backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-    //       backgroundColor: ['#FF6384'],
-    //       hoverBackgroundColor: ['#36A2EB']
-    //     },
-    //     {
-    //       label: 'Attempted',
-    //       data: attemptedDataArray,
-    //       backgroundColor: ['#FFCE56'],
-    //       hoverBackgroundColor: ['#E7E9ED']
-    //     }
-    //   ]
-    // }
     return (
       <CompletionRatio />
     )
@@ -83,29 +49,27 @@ class Dashboard extends Component {
 
   renderVictoryTotal() {
     // console.log('VICTORY DATA', this.props.victoryData)
-    var victoryLabels = '';
-    var victoryGraphData = ''
-    if (this.props.victoryData) {
-      const { victoryData } = this.props
-       victoryLabels = Object.keys(victoryData)
-       victoryGraphData = Object.values(victoryData)
-      // console.log('VICTORY LABELS', victoryLabels)
-      // console.log('VICTORY DATA', victoryGraphData)
-    }
-
-     victoryGraphData = {
-      labels: victoryLabels,
-      datasets: [{
-        data: victoryGraphData,
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
-      }]
-    }
+    // var victoryLabels = '';
+    // var victoryGraphData = ''
+    // if (this.props.victoryData) {
+    //   const { victoryData } = this.props
+    //    victoryLabels = Object.keys(victoryData)
+    //    victoryGraphData = Object.values(victoryData)
+    //   // console.log('VICTORY LABELS', victoryLabels)
+    //   // console.log('VICTORY DATA', victoryGraphData)
+    // }
+    //
+    //  victoryGraphData = {
+    //   labels: victoryLabels,
+    //   datasets: [{
+    //     data: victoryGraphData,
+    //     backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
+    //     hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
+    //   }]
+    // }
 
     return (
-      <VictoryTotal
-        victoryData={victoryGraphData}
-      />
+      <VictoryTotal />
     )
   }
 

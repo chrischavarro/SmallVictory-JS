@@ -78,10 +78,12 @@ chartController.get('/api/radar_data/:time', (req, res) => {
 })
 
 
-chartController.get('/api/victory_data', (req, res) => {
+chartController.get('/api/victory_data/:time', (req, res) => {
   const userId = req.user._id;
+  const time = req.params.time
+  var searchRange = ago(time, "days");
   // try and select only the task name
-  Completion.find({ user_id: { $in: userId }})
+  Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange} } ]})
     .populate('task_id')
     .exec((err, completions) => {
       var completionNameArray = []
@@ -98,7 +100,7 @@ chartController.get('/api/victory_data', (req, res) => {
         }
       })
       var completionData = mapToObj(completionMap)
-      console.log('COMPLETION DATA', completionData)
+      // console.log('COMPLETION DATA', completionData)
       res.send(completionData);
     })
 })
