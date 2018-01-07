@@ -90,14 +90,15 @@ class Dashboard extends Component {
         {
           label: 'Completed',
           data: completedDataArray,
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-          hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
+          // backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
+          backgroundColor: ['#FF6384'],
+          hoverBackgroundColor: ['#36A2EB']
         },
         {
           label: 'Attempted',
           data: attemptedDataArray,
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-          hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
+          backgroundColor: ['#FFCE56'],
+          hoverBackgroundColor: ['#E7E9ED']
         }
       ]
     }

@@ -10,6 +10,14 @@ class CompletionRatio extends Component {
           <Radar
             width={300}
             data={this.props.radarData}
+            options={{
+              scale: {
+                  ticks: {
+                    beginAtZero: true,
+                    stepSize: 1
+                  }
+              }
+            }}
           />
         </div>
       </div>
