@@ -30,11 +30,13 @@ class TaskBreakdown extends Component {
     var all_time = '9999'
     return (
       <div className="row">
-        <div className="col s6 offset-s3 center-align" style={{ }}>
-          <h2>{"Here's how many reps you've completed"}</h2>
-          <button className="btn" onClick={() => this.props.fetchRepData(week)}>This Week</button>
-          <button className="btn" onClick={() => this.props.fetchRepData(month)}>This Month</button>
-          <button className="btn" onClick={() => this.props.fetchRepData(all_time)}>All Time</button>
+        <div className="completionChart col s8 offset-s2 center-align" style={{ }}>
+          <h2 className="chartBreakdown">{"Here's how many reps you've completed"}</h2>
+          <div className="col s10 offset-s1" style={{ paddingBottom: '15px' }}>
+            <button className="updateChart" onClick={() => this.props.fetchRepData(week)}>This Week</button>
+            <button className="updateChart" onClick={() => this.props.fetchRepData(month)}>This Month</button>
+            <button className="updateChart" onClick={() => this.props.fetchRepData(all_time)}>All Time</button>
+          </div>
           <HorizontalBar
             width={200}
             data={data}

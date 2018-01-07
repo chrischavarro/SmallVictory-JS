@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Doughnut } from 'react-chartjs-2'
 import * as actions from '../../actions';
+import styles from '../../App.css'
 
 class TaskBreakdown extends Component {
   render() {
@@ -30,11 +31,13 @@ class TaskBreakdown extends Component {
     var all_time = '9999'
     return (
       <div className="row">
-        <div className="col s6 offset-s3 center-align" style={{ }}>
-          <h2>{"Here's the breakdown of the tasks you've gotten"}</h2>
-          <button className="btn" onClick={() => this.props.fetchChartData(week)}>This Week</button>
-          <button className="btn" onClick={() => this.props.fetchChartData(month)}>This Month</button>
-          <button className="btn" onClick={() => this.props.fetchChartData(all_time)}>All Time</button>
+        <div className="completionChart col s8 offset-s2 center-align" style={{ }}>
+          <h2 className="chartBreakdown">{"Here's the breakdown of the tasks you've gotten"}</h2>
+          <div className="col s10 offset-s1" style={{ paddingBottom: '15px' }}>
+            <button className="updateChart" onClick={() => this.props.fetchChartData(week)}>This Week</button>
+            <button className="updateChart" onClick={() => this.props.fetchChartData(month)}>This Month</button>
+            <button className="updateChart" onClick={() => this.props.fetchChartData(all_time)}>All Time</button>
+          </div>
           <Doughnut
             width={200}
             data={data}

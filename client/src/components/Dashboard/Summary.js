@@ -9,19 +9,20 @@ class Summary extends Component {
     // console.log(this.props)
     return (
       <div className="row">
-        <div className="col s6 offset-s3 center-align" style={{ }}>
-        <h4>{`What's up, ${name}?`}</h4>
-        <h4>{`You're currently on a x day streak`}</h4>
-        <h4>{`You've completed ${completed} out of ${attempted} victories`}</h4>
-        <h4>{`You've completed ${percentage}% of your victories!`}</h4>
-        <h4>{`You're on the ${track} track`}</h4>
-        <h4>{`Ready for today's task?`}</h4>
+        <div className="dashboardSummary col s8 offset-s2 center-align" style={{ }}>
+        <h4 className="summaryHeader">{`What's up, ${name}?`}</h4>
+        <h4 className="summaryText">{`You're currently on a x day streak`}</h4>
+        <h4 className="summaryText">{`You've completed ${completed} out of ${attempted} victories`}</h4>
+        <h4 className="summaryText">{`You've completed ${percentage}% of your victories!`}</h4>
+        <h4 className="summaryText">{`You're on the ${track} track`}</h4>
+        <h4 className="summaryText">{`Ready for today's task?`}</h4>
+
         <Link to="/tasks/new" style={{ textDecoration: 'none', color: 'white' }}>
           <button
-            className="btn-large"
+            className="startTask"
             type="button"
           >
-              Lets Go!
+              {"Let's Go!"}
           </button>
         </Link>
         </div>

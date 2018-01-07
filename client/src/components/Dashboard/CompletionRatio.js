@@ -44,11 +44,13 @@ class CompletionRatio extends Component {
     // console.log(radarData)
     return (
       <div className="row">
-        <div className="col s6 offset-s3 center-align" style={{ }}>
-          <h2>{"Here's how you've done with your tasks"}</h2>
-          <button className="btn" onClick={() => this.props.fetchRadarData(week)}>This Week</button>
-          <button className="btn" onClick={() => this.props.fetchRadarData(month)}>This Month</button>
-          <button className="btn" onClick={() => this.props.fetchRadarData(all_time)}>All Time</button>
+        <div className="completionChart col s8 offset-s2 center-align" style={{ }}>
+          <h2 className="chartBreakdown">{"Here's how you've done with your tasks"}</h2>
+          <div className="col s10 offset-s1" style={{ paddingBottom: '15px' }}>
+            <button className="updateChart" onClick={() => this.props.fetchRadarData(week)}>This Week</button>
+            <button className="updateChart" onClick={() => this.props.fetchRadarData(month)}>This Month</button>
+            <button className="updateChart" onClick={() => this.props.fetchRadarData(all_time)}>All Time</button>
+          </div>
           <Radar
             width={200}
             data={radarData}

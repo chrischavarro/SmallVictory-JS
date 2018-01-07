@@ -64,7 +64,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="container">
-        <h2 className="center-align">
+        <h2 className="center-align dashboardHeader">
           Dashboard
         </h2>
         {this.renderOverview()}
