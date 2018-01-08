@@ -15,14 +15,14 @@ class Header extends Component {
           <Link to={url}>
             <img src={Logo} style={{ width: '200px', height: '30px', marginTop: '20px', marginLeft: '20px' }} alt="Small Victory" />
           </Link>
-          <ul className="right">
-            <li><a href="/api/logout">Log Out</a></li>
-          </ul>
         </div>
       </nav>
     )
   }
 }
+// <ul className="right">
+// <li><a href="/api/logout">Log Out</a></li>
+// </ul>
 
 function mapStateToProps({ auth }) {
   return { auth }
