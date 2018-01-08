@@ -5,8 +5,8 @@ const userSchema = new Schema({
   googleId: String,
   name: String,
   profile: { type: Schema.Types.ObjectId, ref: 'Profile' }
-});
+}, { collection: 'User'});
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema, 'User');
 
 module.exports = User;
