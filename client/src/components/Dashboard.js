@@ -35,9 +35,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log(this.props.summary)
-
-
+    // console.log(this.props.summary)
     return (
       <div className="container">
         <Summary />

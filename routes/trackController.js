@@ -9,16 +9,16 @@ const ObjectId = require('mongoose').Types.ObjectId;
 trackController.get('/api/tracks/get', (req, res) => {
   const profileNum  = req.user.profile
   const profileId = ObjectId(`${profileNum}`)
-  console.log('USER PROFILE', req.user, profileId)
-  console.log('PROFILE ID', profileNum)
+  // console.log('USER PROFILE', req.user, profileId)
+  // console.log('PROFILE ID', profileNum)
   Profile.findById(profileId)
     .exec((err, profile) => {
       if (err) { console.log('Error occurred when finding profile', err) }
-      console.log('USER PROFILE FOUND', profile)
+      // console.log('USER PROFILE FOUND', profile)
       Track.find({ tags: { $in: profile.tags } })
         .exec((err, tracks) => {
           if (err) { console.log('Error occurred when finding tracks', err) }
-          console.log('Associated tracks!', tracks)
+          // console.log('Associated tracks!', tracks)
           res.send(tracks)
         })
     })

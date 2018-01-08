@@ -108,12 +108,13 @@ chartController.get('/api/victory_data/:time', (req, res) => {
 chartController.get('/api/rep_data/:time', (req, res) => {
   const userId = req.user._id;
   const time = req.params.time;
-  const fitnessTrack = '5a4d09bcf4144cd1267e9865'
+  const fitnessTrack = '5a53d1d9a0da030014f428c6'
   const searchRange = ago(time, "days");
 
   Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange }}, { track_id: fitnessTrack} ]})
     .populate('task_id')
     .exec((err, completions) => {
+      console.log('COMPLETIONS FOUND', completions)
       const repMap = new Map();
       completions.forEach((completion) => {
         let taskName = completion.task_id.name

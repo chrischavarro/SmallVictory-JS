@@ -54,15 +54,15 @@ seedController.get('/seed/tasktypes', (req, res) => {
 
 seedController.get('/seed/tasks', (req, res) => {
   const tasks = [
-    { name: 'Sprints', taskType: '5a4e5559b1be952784ae2d2b' },
-    { name: 'Lunges', taskType: '5a4e5559b1be952784ae2d2e' },
     { name: 'Burpees', taskType: '5a4e5559b1be952784ae2d2a' },
     { name: 'Jumping Jacks', taskType: '5a4e5559b1be952784ae2d2a' },
+    { name: 'Sprints', taskType: '5a4e5559b1be952784ae2d2b' },
     { name: 'Situps', taskType: '5a4e5559b1be952784ae2d2d' },
     { name: 'Planks', taskType: '5a4e5559b1be952784ae2d2d' },
+    { name: 'Pushups', taskType: '5a4e5559b1be952784ae2d2d' },
     { name: 'Toe Touches', taskType: '5a4e5559b1be952784ae2d2c' },
     { name: 'Hip Flexor Stretches', taskType: '5a4e5559b1be952784ae2d2c' },
-    { name: 'Pushups', taskType: '5a4e5559b1be952784ae2d2d' },
+    { name: 'Lunges', taskType: '5a4e5559b1be952784ae2d2e' },
     { name: 'Squats', taskType: '5a4e5559b1be952784ae2d2e' }
   ]
 

@@ -49,7 +49,7 @@ class TaskNew extends Component {
           <div className="row">
             <div className="col s4 offset-s4" style={{ paddingTop: '50px', paddingLeft: '5%' }}>
               <ReactCountdownClock
-              seconds={10}
+              seconds={300}
               alpha={1}
               color="#3C78D8"
               size={400}
