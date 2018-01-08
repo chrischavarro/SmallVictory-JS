@@ -7,10 +7,11 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 trackController.get('/api/tracks/get', (req, res) => {
-  // const { profile } = req.user
-  const profile = ObjectId(req.user.profile)
-  console.log('USER PROFILE', req.user, profile)
-  Profile.findById(profile)
+  const profileNum  = req.user.profile
+  const profileId = ObjectId(profileNum)
+  console.log('USER PROFILE', req.user, profileId)
+  console.log('PROFILE ID', profileNum)
+  Profile.findById(profileId)
     .exec((err, profile) => {
       if (err) { console.log('Error occurred when finding profile', err) }
       console.log('USER PROFILE FOUND', profile)
