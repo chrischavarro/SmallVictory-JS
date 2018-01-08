@@ -46,6 +46,77 @@
   color: #7d7d7d;
 }
 
+/*  WIZARD STYLING */
+
+.greetingText {
+  font-size: 40px!important;
+  display: block;
+  color: #7d7d7d;
+  font-weight: 300;
+  padding-bottom: 25px;
+}
+
+.wizardFormPage {
+  background-color: #3C78D8;
+  color: #ffffff;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  box-shadow: 0px 8px 23px 5px rgba(88, 105, 107, 0.35);
+}
+
+.wizardSelectButton {
+  background-color:rgba(40, 96, 144, 1);
+  color: #fff;
+  font-size: 22px;
+  border-radius: 2px;
+  outline: 0;
+  letter-spacing: .5px;
+  transition: all .3s;
+  margin-bottom: 15px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+}
+
+.wizardSelectButton:hover {
+  background-color: rgba(40, 96, 144, 0.6);
+}
+
+.formTitle {
+  font-size: 38px;
+  padding-bottom: 15px;
+  font-weight: 400;
+}
+
+.labelText {
+  color: white!important;
+  font-size: 24pt!important;
+}
+
+.wizardContinueButton {
+    background-color: #4881de;
+    color: #fff;
+    border: 1px solid transparent;
+    border-color: #2e6da4;
+    border-radius: 2px;
+    height: 44px;
+    font-size: 24px;
+    font-weight: 600;
+    outline: 0;
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    margin-top: 10px;
+    letter-spacing: .5px;
+    transition: all .3s;
+    margin-bottom: 15px;
+    width: 75%;
+}
+
+.wizardContinueButton:hover {
+    background-color: #26a69a;
+}
+
 /*  DASHBOARD STYLING */
 .dashboardHeader {
   font-weight: 200;

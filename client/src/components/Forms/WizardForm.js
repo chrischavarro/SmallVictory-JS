@@ -28,11 +28,11 @@ class WizardForm extends Component {
   }
 
   render() {
-    // console.log('Found tags', this.props.tags)
     const { onSubmit } = this.props
     const { page } = this.state
     return (
-      <div>
+      <div className="container col s12 center-align">
+        <span className="greetingText" style={{ marginTop: '150px' }}>{`Hey ${this.props.auth.name}! Let's get started.`}</span>
         {page === 1 && <WizardFormFirstPage onSubmit={this.nextPage} />}
         {page === 2 && (
           <WizardFormSecondPage
@@ -56,8 +56,11 @@ WizardForm.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-function mapStateToProps({ tags }) {
-  return { tags };
+function mapStateToProps(state) {
+  return {
+    tags: state.tags,
+    auth: state.auth
+  };
 };
 
 export default connect(mapStateToProps, { fetchTags })(WizardForm);

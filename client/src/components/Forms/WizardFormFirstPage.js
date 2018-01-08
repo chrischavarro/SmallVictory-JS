@@ -22,16 +22,16 @@ class WizardFormFirstPage extends Component {
     const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     return days.map(day => {
       return (
-        <div key={day}>
+        <div key={day} style={{ paddingTop: '5px', paddingBottom: '5px' }}>
           <Field
             name={day}
             id={day}
             component="input"
             type="checkbox"
+            className="wizardSelectButton"
             key={day}
-
           />
-          <label htmlFor={day}>{day}</label>
+          <label className="labelText" htmlFor={day}>{day}</label>
         </div>
       )
     })
@@ -39,12 +39,14 @@ class WizardFormFirstPage extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="container" style={{ paddingTop: '150px', marginBottom: '20px' }}>
-        <h4 className="center-align">What days do you want to get a task?</h4>
+      <div className="container col s8 offset-s2 wizardFormPage" style={{ marginBottom: '20px' }}>
+        <h4 className="center-align formTitle">What days do you <br/> want to get a task?</h4>
         <form onSubmit={handleSubmit}>
-          {this.renderFields()}
+          <div style={{ width: '25%', margin: '0 auto', float: 'none', textTransform: 'capitalize', textAlign: 'left' }}>
+            {this.renderFields()}
+          </div>
           <div>
-            <button type="submit" className="next btn">
+            <button type="submit" className="next wizardContinueButton">
               Next
             </button>
           </div>

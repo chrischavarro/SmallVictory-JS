@@ -21,7 +21,7 @@ class WizardFormThirdPage extends Component {
     // console.log('Test props!', this.props.tags)
     const { handleSubmit, pristine, previousPage, submitting } = this.props
     return (
-      <div className="container" style={{ paddingTop: '150px', marginBottom: '20px' }}>
+      <div className="container" style={{ marginBottom: '20px' }}>
         <h4 className="center-align">What do you want to get better at?</h4>
         <form onSubmit={handleSubmit}>
 

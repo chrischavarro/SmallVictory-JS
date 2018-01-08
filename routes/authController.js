@@ -19,4 +19,8 @@ authController.get('/auth/google/callback',
   }
 );
 
+authController.get('/api/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+})
 module.exports = authController;
