@@ -11,7 +11,7 @@ trackController.get('/api/tracks/get', (req, res) => {
     .exec((err, profile) => {
       Track.find({ tags: { $in: profile.tags } })
         .exec((err, tracks) => {
-          // console.log('Associated tracks!', tracks)
+          console.log('Associated tracks!', tracks)
           res.send(tracks)
         })
     })

@@ -9,9 +9,10 @@ class SelectTrack extends Component {
   }
 
   renderTracks() {
-    const { tracks } = this.props
     const { history } = this.props
     if (this.props.tracks) {
+      console.log(this.props.tracks)
+      const { tracks } = this.props
       return tracks.map((track) => {
         return (
           <div className="row" key={track._id}>
