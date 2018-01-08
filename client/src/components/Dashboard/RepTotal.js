@@ -30,7 +30,7 @@ class TaskBreakdown extends Component {
     var all_time = '9999'
     return (
       <div className="row">
-        <div className="completionChart col s8 offset-s2 center-align" style={{ }}>
+        <div className="completionChart col s8 offset-s2 center-align" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
           <h2 className="chartBreakdown">{"Here's how many reps you've completed"}</h2>
           <div className="col s10 offset-s1" style={{ paddingBottom: '15px' }}>
             <button className="updateChart" onClick={() => this.props.fetchRepData(week)}>This Week</button>

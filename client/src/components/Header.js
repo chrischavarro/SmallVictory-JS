@@ -6,7 +6,7 @@ class Header extends Component {
   render() {
     return (
       <nav style={{ backgroundColor: '#3C78D8' }}>
-        <div className="nav-wrapper">
+        <div className="nav-wrapper valign-wrapper">
           <Link to ="/">
             <img src={Logo} style={{ width: '200px', height: '30px', marginTop: '20px', marginLeft: '20px' }} alt="Small Victory" />
           </Link>

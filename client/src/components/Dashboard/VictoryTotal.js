@@ -28,7 +28,7 @@ class VictoryTotal extends Component {
 
     return (
       <div className="row">
-        <div className="completionChart col s8 offset-s2 center-align" style={{ }}>
+        <div className="completionChart col s8 offset-s2 center-align" style={{ paddingLeft: '30px', paddingRight: '30px' }}>
           <h2 className="chartBreakdown">{"Here's how your victories have added up"}</h2>
           <div className="col s10 offset-s1" style={{ paddingBottom: '15px' }}>
             <button className="updateChart" onClick={() => this.props.fetchVictoryData(week)}>This Week</button>

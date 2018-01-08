@@ -23,10 +23,10 @@ class TaskNew extends Component {
       const task = this.props.task[0].name
       return (
         <div className="col s6 offset-s3 center-align" style={{ }}>
-          <h1>{"Here's your task for today"}</h1>
-          <h2>{`Do ${count} ${task}`}</h2>
+          <h1 className="headerText">{"Here's your task for today"}</h1>
+          <h2 className="headerText">{`Do ${count} ${task}`}</h2>
           <button
-            className="btn-large"
+            className="startTimer"
             type="button"
             style={{ width: '40%', fontSize: '36px', height: '80px', backgroundColor: '#3C78D8' }}
             onClick={() => this.setState({ taskStarted: true })}

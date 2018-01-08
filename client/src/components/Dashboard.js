@@ -37,30 +37,6 @@ class Dashboard extends Component {
     }
   }
 
-  renderBreakdown() {
-    return (
-      <TaskBreakdown />
-    )
-  }
-
-  renderCompletionRatio() {
-    return (
-      <CompletionRatio />
-    )
-  }
-
-  renderVictoryTotal() {
-    return (
-      <VictoryTotal />
-    )
-  }
-
-  renderRepTotal() {
-    return (
-      <RepTotal />
-    )
-  }
-
   render() {
     return (
       <div className="container">
@@ -68,10 +44,10 @@ class Dashboard extends Component {
           Dashboard
         </h2>
         {this.renderOverview()}
-        {this.renderBreakdown()}
-        {this.renderCompletionRatio()}
-        {this.renderVictoryTotal()}
-        {this.renderRepTotal()}
+        <TaskBreakdown />
+        <CompletionRatio />
+        <VictoryTotal />
+        <RepTotal />
       </div>
     )
   }

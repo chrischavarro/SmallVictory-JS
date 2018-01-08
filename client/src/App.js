@@ -7,7 +7,12 @@ import Header from './components/Header';
 import SelectTrack from './components/Track/SelectTrack';
 import TaskNew from './components/Tasks/TaskNew';
 import * as actions from './actions';
-// import styles from './App.css'
+import TransitionGroup from 'react-transition-group/TransitionGroup';
+
+const firstChild = props => {
+  const childrenArray = React.Children.toArray(props.children);
+  return childrenArray[0] || null;
+};
 
 class App extends Component {
   componentDidMount() {
