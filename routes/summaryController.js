@@ -11,8 +11,10 @@ summaryController.get('/api/summary', (req, res) => {
   var completed = 0;
   const summary = [];
   const trackList = [];
+
   Completion.find({ user_id: userId })
     .exec((err, completions) => {
+      var percentage = 0;
       // console.log('COMPLETIONS', completions)
       if (completions.length > 0) {
         completions.forEach((completion) => {
@@ -22,11 +24,10 @@ summaryController.get('/api/summary', (req, res) => {
           attempted += 1
         })
 
-        if (completions.length > 1) {
+        if (completions.length > 0) {
           var percentage = Math.floor((completed/attempted) * 100);
-          // console.log('PERCENTAGE', percentage)
         }
-        else {
+        else if (completions.length === 0) {
           var percentage = 0;
         }
       }
@@ -40,8 +41,8 @@ summaryController.get('/api/summary', (req, res) => {
         summary.push({'completed': completed})
         summary.push({'attempted': attempted})
         summary.push(trackList)
-        summary.push(percentage)
-
+        summary.push({'percentage': percentage})
+        console.log('SUMMARY', summary)
         res.send(summary)
       })
 

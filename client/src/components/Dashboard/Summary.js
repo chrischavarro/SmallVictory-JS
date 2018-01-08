@@ -11,13 +11,14 @@ class Summary extends Component {
     let name = '';
     let completed = '';
     let attempted = '';
-    let percentage = '';
+    let percentage = '0';
     let track = '';
+    console.log(this.props.summary)
     if (this.props.summary && this.props.auth) {
       name = this.props.auth.name
       completed = this.props.summary[0].completed
       attempted = this.props.summary[1].attempted
-      percentage = this.props.summary[3]
+      percentage = this.props.summary[3].percentage
       track = this.props.summary[2][0]
     }
     return (
