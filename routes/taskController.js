@@ -39,7 +39,7 @@ taskController.post('/api/task/failed', (req, res) => {
   const { profile, _id } = req.user;
   const count = req.body[1];
   const task_id = req.body[0]._id;
-  const taskType = req.body[0].taskType[0];
+  const taskType = req.body[0].taskType;
 
   Profile.findById(profile)
     .exec((err, foundProfile) => {
@@ -68,7 +68,7 @@ taskController.post('/api/task/completed', (req, res) => {
   const { profile, _id } = req.user;
   const count = req.body[1];
   const task_id = req.body[0]._id;
-  const taskType = req.body[0].taskType[0];
+  const taskType = req.body[0].taskType;
 
   Profile.findById(profile)
     .exec((err, foundProfile) => {

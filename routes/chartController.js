@@ -23,10 +23,10 @@ chartController.get('/api/chart_data/:time', (req, res) => {
     .populate('taskType')
     .exec((err, completions) => {
       if (err) { console.log(err) }
-      completions.sort((a,b) => a.taskType[0].name.localeCompare(b.taskType[0].name))
+      completions.sort((a,b) => a.taskType.name.localeCompare(b.taskType.name))
       var result = new Map();
       completions.forEach((completion) => {
-        var labelName = completion.taskType[0].name
+        var labelName = completion.taskType.name
         if (result.get(labelName)) {
           result.set(labelName, result.get(labelName) + 1)
         } else {
@@ -35,6 +35,7 @@ chartController.get('/api/chart_data/:time', (req, res) => {
       })
       doughnutData = mapToObj(result)
       doughnutLabels.push(result.keys())
+      // console.log('TASK TYPE RESTRUCTURING TEST', doughnutData)
       res.send(doughnutData)
     })
 })
@@ -47,14 +48,14 @@ chartController.get('/api/radar_data/:time', (req, res) => {
   Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange} } ]})
     .populate('taskType')
     .exec((err, completions) => {
-      completions.sort((a,b) => a.taskType[0].name.localeCompare(b.taskType[0].name))
+      completions.sort((a,b) => a.taskType.name.localeCompare(b.taskType.name))
       var completedTasks = completions.filter(completion => completion.completed == true)
       var radarData = []
       var attemptedResult = new Map();
       var completedResult = new Map();
 
       completedTasks.forEach((completion) => {
-        var labelName = completion.taskType[0].name
+        var labelName = completion.taskType.name
         if (completedResult.get(labelName)) {
           completedResult.set(labelName, completedResult.get(labelName) +1)
         } else {
@@ -63,7 +64,7 @@ chartController.get('/api/radar_data/:time', (req, res) => {
       })
 
       completions.forEach((completion) => {
-        var labelName = completion.taskType[0].name
+        var labelName = completion.taskType.name
         if (attemptedResult.get(labelName)) {
           attemptedResult.set(labelName, attemptedResult.get(labelName) + 1)
         } else {
