@@ -21,7 +21,7 @@ class Summary extends Component {
       track = this.props.summary[2][0]
     }
     return (
-      <div className="row">
+      <div className="row" style={{ paddingTop: '70px' }}>
         <div className="dashboardSummary col s8 offset-s2 center-align" style={{ }}>
           <h4 className="summaryHeader">{`What's up, ${name}?`}</h4>
           <h4 className="summaryText">{`You're currently on a x day streak`}</h4>

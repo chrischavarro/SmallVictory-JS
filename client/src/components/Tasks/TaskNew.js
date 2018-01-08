@@ -9,7 +9,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 class TaskNew extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       taskStarted: false
     };
@@ -72,16 +71,14 @@ class TaskNew extends Component {
   }
 
   render() {
-    // console.log(this.props.task)
     return (
       <div className="row" style={{ marginTop: "5%" }}>
-      <ReactCSSTransitionGroup
-      transitionName="background"
-      transitionEnterTimeout={1000}
-      transitionLeaveTimeout={1000}
-      >
-
         {this.renderTask()}
+        <ReactCSSTransitionGroup
+        transitionName="fade"
+        transitionEnterTimeout={1000}
+        transitionLeaveTimeout={1000}
+        >
         {this.startTimer()}
         </ReactCSSTransitionGroup>
       </div>

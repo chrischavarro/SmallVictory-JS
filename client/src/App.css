@@ -1,4 +1,3 @@
-/*
 .fade-enter {
   opacity: 0.01;
 }
@@ -17,6 +16,7 @@
   transition: opacity 300ms ease-in;
 }
 
+/*
 .background-enter {
   transform: translate(100%);
 }
@@ -30,7 +30,7 @@
 .background-leave.background-leave-active {
   transform: translate(-100%);
   transition: transform 1000ms ease-in-out;
-} */
+}
 
 .switch-wrapper {
   position: relative;

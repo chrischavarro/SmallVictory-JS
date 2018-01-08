@@ -44,13 +44,13 @@ export const fetchTask = () => async dispatch => {
 export const failedTask = (task, history) => async dispatch => {
   const res = await axios.post('/api/task/failed', task);
   dispatch({ type: FAILED_TASK, payload: res.data });
-  history.push('/')
+  history.push('/dashboard')
 }
 
 export const completedTask = (task, history) => async dispatch => {
   const res = await axios.post('/api/task/completed', task);
   dispatch({ type: COMPLETED_TASK, payload: res.data });
-  history.push('/');
+  history.push('/dashboard');
 }
 
 export const fetchChartData = (time) => async dispatch => {

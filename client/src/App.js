@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { AnimatedSwitch } from 'react-router-transition';
+import { AnimatedSwitch, AnimatedRoute, spring } from 'react-router-transition';
+// import spring from '../../src/spring';
 import { connect } from 'react-redux';
 import Home from './components/Home/Home';
 import Header from './components/Header';
@@ -10,6 +11,44 @@ import TaskNew from './components/Tasks/TaskNew';
 import * as actions from './actions';
 import { CSSTransitionGroup } from 'react-transition-group';
 import './App.css';
+
+function glide(val) {
+  return spring(val, {
+    stiffness: 174,
+    damping: 24,
+  });
+}
+
+function slide(val) {
+  return spring(val, {
+    stiffness: 125,
+    damping: 16,
+  });
+}
+
+const pageTransitions = {
+  atEnter: {
+    offset: 100,
+  },
+  atLeave: {
+    offset: glide(-100),
+  },
+  atActive: {
+    offset: glide(0),
+  },
+};
+
+const topBarTransitions = {
+  atEnter: {
+    offset: -100,
+  },
+  atLeave: {
+    offset: slide(-150),
+  },
+  atActive: {
+    offset: slide(0),
+  },
+};
 
 class App extends Component {
   componentDidMount() {
@@ -23,10 +62,11 @@ class App extends Component {
           <div>
             <Header />
             <AnimatedSwitch
-              atEnter={{ opacity: 0 }}
-              atLeave={{ opacity: 0 }}
-              atActive={{ opacity: 1 }}
               className="switch-wrapper"
+              {...pageTransitions}
+              mapStyles={styles => ({
+                transform: `translateX(${styles.offset}%)`,
+              })}
             >
               <Route exact path="/" component={Home} />
               <Route exact path="/dashboard" component={Dashboard} key="dashboard-key" />
