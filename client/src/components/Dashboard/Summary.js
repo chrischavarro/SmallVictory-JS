@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+// import { TweenMax, Power2, LimelineLite } from 'gsap'
 
 class Summary extends Component {
+//   componentWillEnter (callback) {
+//   const el = this.container;
+//   TweenMax.fromTo(el, 0.3, {y: 100, opacity: 0}, {y: 0, opacity: 1, onComplete: callback});
+// }
+//
+// componentWillLeave (callback) {
+//   const el = this.container;
+//   TweenMax.fromTo(el, 0.3, {y: 0, opacity: 1}, {y: -100, opacity: 0, onComplete: callback});
+// }
   render() {
     const {name} = this.props.auth
     let completed = null;

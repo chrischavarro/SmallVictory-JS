@@ -4,6 +4,8 @@ import * as actions from '../../actions';
 import ReactCountdownClock from 'react-countdown-clock';
 import { withRouter } from 'react-router'
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 class TaskNew extends Component {
   constructor(props) {
     super(props);
@@ -73,8 +75,15 @@ class TaskNew extends Component {
     // console.log(this.props.task)
     return (
       <div className="row" style={{ marginTop: "5%" }}>
+      <ReactCSSTransitionGroup
+      transitionName="background"
+      transitionEnterTimeout={1000}
+      transitionLeaveTimeout={1000}
+      >
+
         {this.renderTask()}
         {this.startTimer()}
+        </ReactCSSTransitionGroup>
       </div>
     )
   }

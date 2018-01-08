@@ -7,61 +7,12 @@ import CompletionRatio from './Dashboard/CompletionRatio';
 import VictoryTotal from './Dashboard/VictoryTotal';
 import RepTotal from './Dashboard/RepTotal';
 
-import Transition from 'react-transition-group/Transition'
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import FadeAndSlideTransition from '../FadeAndSlideTransition';
-
-// function FadeTransition ({children, duration, in: inProp}) {
-//   const defaultStyle = {
-//     transition: `${duration}ms ease-in`,
-//     transitionProperty: 'opacity, transform'
-//   }
-//
-//   const transitionStyles = {
-//     entering: {
-//       opacity: 0,
-//       transform: 'translateY(-10%)'
-//     },
-//     entered: {
-//       opacity: 1,
-//       transform: 'translateY(0)'
-//     },
-//     exiting: {
-//       opacity: 0,
-//       transform: 'translateY(-10%)'
-//     }
-//   };
-//
-//   return (
-//     <Transition in={inProp} timeout={{
-//       enter: 0,
-//       exit: duration
-//     }}>
-//       {
-//         (state) => {
-//           if (state === 'exited') {
-//             return null;
-//           }
-//
-//           return React.cloneElement(children, {
-//             style: Object.assign({}, defaultStyle, transitionStyles[state])
-//           })
-//         }
-//       }
-//     </Transition>
-//   )
-// }
-const Fade = ({ children, ...props }) => (
-  <CSSTransition
-    {...props}
-    timeout={1000}
-    classNames="fade"
-  >
-    {children}
-  </CSSTransition>
-);
+// import Transition from 'react-transition-group/Transition'
+// import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Dashboard extends Component {
+
   componentWillMount() {
     var all_time = 9999
       this.props.fetchSummary();
@@ -71,17 +22,26 @@ class Dashboard extends Component {
       this.props.fetchRepData(all_time);
   }
 
+  renderSummary() {
+    const item = 'item'
+    return (
+      <Summary key={item} />
+    )
+  }
+
   render() {
     return (
       <div className="container">
         <h2 className="center-align dashboardHeader">
           Dashboard
         </h2>
-        <TransitionGroup>
-          <Fade>
-            <Summary />
-          </Fade>
-        </TransitionGroup>
+        <ReactCSSTransitionGroup
+        transitionName="fade"
+        transitionEnterTimeout={1000}
+        transitionLeaveTimeout={300}
+        >
+          {this.renderSummary()}
+        </ReactCSSTransitionGroup>
         <TaskBreakdown />
         <CompletionRatio />
         <VictoryTotal />
