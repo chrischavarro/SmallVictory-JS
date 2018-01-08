@@ -3,12 +3,12 @@ const trackController = express.Router();
 const Track = require('../models/Track');
 // const Tag = require('../models/Tag');
 const Profile = require('../models/Profile');
-const mongoose = require('mongoose');
-const ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = require('mongoose').Types.ObjectId;
+// const ObjectId = mongoose.Schema.Types.ObjectId;
 
 trackController.get('/api/tracks/get', (req, res) => {
   const profileNum  = req.user.profile
-  const profileId = ObjectId(profileNum)
+  const profileId = ObjectId(`${profileNum}`)
   console.log('USER PROFILE', req.user, profileId)
   console.log('PROFILE ID', profileNum)
   Profile.findById(profileId)
