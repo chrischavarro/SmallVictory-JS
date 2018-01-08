@@ -9,8 +9,10 @@ trackController.get('/api/tracks/get', (req, res) => {
   const { profile } = req.user
   Profile.findById(profile)
     .exec((err, profile) => {
+      if (err) { console.log('Error occurred when finding profile', err) }
       Track.find({ tags: { $in: profile.tags } })
         .exec((err, tracks) => {
+          if (err) { console.log('Error occurred when finding tracks', err) }
           console.log('Associated tracks!', tracks)
           res.send(tracks)
         })
