@@ -11,6 +11,7 @@ trackController.get('/api/tracks/get', (req, res) => {
   Profile.findById(profile._id)
     .exec((err, profile) => {
       if (err) { console.log('Error occurred when finding profile', err) }
+      console.log('USER PROFILE FOUND', profile)
       Track.find({ tags: { $in: profile.tags } })
         .exec((err, tracks) => {
           if (err) { console.log('Error occurred when finding tracks', err) }
