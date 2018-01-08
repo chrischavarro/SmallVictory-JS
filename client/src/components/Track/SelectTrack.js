@@ -9,15 +9,14 @@ class SelectTrack extends Component {
   }
 
   renderTracks() {
-    var tracks = null
+    const { tracks } = this.props
+    const { history } = this.props
     if (this.props.tracks) {
-      const { history } = this.props
-      var { tracks } = this.props
-      return this.props.tracks.map((track) => {
+      return tracks.map((track) => {
         return (
           <div className="row" key={track._id}>
             <div key={track._id} style={{ paddingBottom: '10px' }} className="col s6 offset-s3">
-              <button
+              <button type="button"
                 onClick={() => this.props.selectTrack(track._id, history)}
                 className="btn-large"
                 style={{ textDecoration: 'uppercase', width: '100%', fontSize: '24px' }}
@@ -28,14 +27,10 @@ class SelectTrack extends Component {
           </div>
         )
       })
-
     }
   }
 
   render() {
-    if (this.props.auth) {
-      const { profile } = this.props.auth
-    }
     return (
       <div className="container col s12 center-align">
         <span className="greetingText" style={{ marginTop: '150px' }}>{`Select Your Track`}</span>
@@ -49,7 +44,6 @@ class SelectTrack extends Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth,
     tracks: state.tracks
   }
 }

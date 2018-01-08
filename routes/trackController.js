@@ -17,19 +17,19 @@ trackController.get('/api/tracks/get', (req, res) => {
     })
 })
 
-trackController.get('/api/tracks/select/:trackId', (req, res) => {
-  // const trackId = Object.keys(req.body).toString()
+trackController.post('/api/tracks/select', (req, res) => {
+  const trackId = Object.keys(req.body).toString()
+  // const { trackId } = req.body
   // console.log('Showing id', trackId)
-  const { trackId } = req.params
   const { profile } = req.user
   Profile.findById(profile)
     .exec((err, profile) => {
-      // Track.findById(trackId)
-      //   .exec((err, track) => {
-      //     console.log('Found track', track)
-      //   })
+      if (err) { console.log('An error occurred', err)}
       profile.tracks.push(trackId)
-      profile.save()
+      profile.save((err, profile) => {
+        if (err) { console.log('Error when saving profile!', err) }
+        console.log('Saved track to profile!', profile)
+      })
       res.send(trackId)
     })
 })

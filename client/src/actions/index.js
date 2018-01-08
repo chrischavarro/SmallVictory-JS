@@ -26,8 +26,8 @@ export const fetchTracks = () =>  async dispatch => {
 }
 
 export const selectTrack = (track, history) => async dispatch => {
-  const res = await axios.get(`/api/tracks/select/${track}`);
-  dispatch({ type: SELECT_TRACK, payload: res.data });
+  axios.post(`/api/tracks/select`, track);
+  // dispatch({ type: SELECT_TRACK, payload: res.data });
   history.push('/dashboard');
 }
 
