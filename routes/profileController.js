@@ -2,7 +2,7 @@ const express = require('express');
 const moment = require('moment');
 const profileController = express.Router()
 const Profile = require('../models/Profile');
-const User = require('../models/user');
+const User = require('../models/User');
 const Tag = require('../models/Tag');
 
 const filterTagsFromRequest = (requestBody) => {
