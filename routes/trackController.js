@@ -30,8 +30,8 @@ trackController.get('/api/tracks/select/:trackId', (req, res) => {
       //   })
       profile.tracks.push(trackId)
       profile.save()
+      res.send(trackId)
     })
-    res.send(trackId)
 })
 
 module.exports = trackController;
