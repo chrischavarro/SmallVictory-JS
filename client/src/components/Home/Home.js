@@ -3,7 +3,6 @@ import Smiley from './Smiley';
 import HomeText from './HomeText';
 import Dashboard from '../Dashboard';
 import WizardForm from '../Forms/WizardForm';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from '../../actions';
@@ -21,17 +20,9 @@ class Home extends Component {
   }
 
   renderPage() {
-    // console.log(this.props.form)
     const { history } = this.props
 
-      if (this.props.auth && this.props.auth.profile) {
-        return (
-          <div>
-            <Dashboard />
-          </div>
-        )
-      }
-      else if (this.props.auth && !this.props.auth.profile) {
+     if (this.props.auth && !this.props.auth.profile) {
           return (
             <div>
               <WizardForm onSubmit={(values) => this.handleSubmit(values, history)} />
@@ -57,7 +48,6 @@ class Home extends Component {
   }
 
   render() {
-    // console.log(this.props.auth)
     const { history } = this.props
     return (
       <div>

@@ -4,25 +4,17 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-// import { TweenMax, Power2, LimelineLite } from 'gsap'
+
 
 class Summary extends Component {
-//   componentWillEnter (callback) {
-//   const el = this.container;
-//   TweenMax.fromTo(el, 0.3, {y: 100, opacity: 0}, {y: 0, opacity: 1, onComplete: callback});
-// }
-//
-// componentWillLeave (callback) {
-//   const el = this.container;
-//   TweenMax.fromTo(el, 0.3, {y: 0, opacity: 1}, {y: -100, opacity: 0, onComplete: callback});
-// }
   render() {
-    const {name} = this.props.auth
-    let completed = null;
-    let attempted = null;
-    let percentage = null;
-    let track = null;
-    if (this.props.summary) {
+    let name = '';
+    let completed = '';
+    let attempted = '';
+    let percentage = '';
+    let track = '';
+    if (this.props.summary && this.props.auth) {
+      name = this.props.auth.name
       completed = this.props.summary[0].completed
       attempted = this.props.summary[1].attempted
       percentage = this.props.summary[3]
