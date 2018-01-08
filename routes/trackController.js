@@ -7,10 +7,11 @@ const Profile = require('../models/Profile');
 
 trackController.get('/api/tracks/get', (req, res) => {
   const { profile } = req.user
-  Profile.findById(profile)
+  console.log('USER PROFILE', req.user, profile)
+  Profile.findById(profile._id)
     .exec((err, profile) => {
       if (err) { console.log('Error occurred when finding profile', err) }
-      Track.find({ "tags": { $in: profile.tags } })
+      Track.find({ tags: { $in: profile.tags } })
         .exec((err, tracks) => {
           if (err) { console.log('Error occurred when finding tracks', err) }
           console.log('Associated tracks!', tracks)
