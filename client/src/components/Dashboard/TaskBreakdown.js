@@ -48,10 +48,8 @@ class TaskBreakdown extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    chartData: state.chartData
-  }
-}
+function mapStateToProps({ chartData }) {
+  return { chartData };
+};
 
 export default connect(mapStateToProps, actions)(TaskBreakdown)

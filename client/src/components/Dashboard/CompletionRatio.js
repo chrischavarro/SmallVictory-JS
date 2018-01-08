@@ -71,10 +71,8 @@ class CompletionRatio extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    radarData: state.radarData
-  }
-}
+function mapStateToProps({ radarData }) {
+  return { radarData }
+};
 
 export default connect(mapStateToProps, actions)(CompletionRatio)

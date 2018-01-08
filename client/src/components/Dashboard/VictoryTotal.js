@@ -59,10 +59,8 @@ class VictoryTotal extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    victoryData: state.victoryData
-  }
-}
+function mapStateToProps({ victoryData }) {
+  return { victoryData }
+};
 
 export default connect(mapStateToProps, actions)(VictoryTotal)
