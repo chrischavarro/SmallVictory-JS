@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-
-
 class Summary extends Component {
   render() {
     let name = '';
@@ -21,11 +19,11 @@ class Summary extends Component {
       percentage = this.props.summary[3].percentage
       track = this.props.summary[2][0]
     }
+    // <h4 className="summaryText">{`You're currently on a x day streak`}</h4>
     return (
       <div className="row" style={{ paddingTop: '70px' }}>
         <div className="dashboardSummary col s8 offset-s2 center-align" style={{ }}>
           <h4 className="summaryHeader">{`What's up, ${name}?`}</h4>
-          <h4 className="summaryText">{`You're currently on a x day streak`}</h4>
           <h4 className="summaryText">{`You've completed ${completed} out of ${attempted} victories`}</h4>
           <h4 className="summaryText">{`You've completed ${percentage}% of your victories!`}</h4>
           <h4 className="summaryTrack">{`You're on the ${track} track`}</h4>

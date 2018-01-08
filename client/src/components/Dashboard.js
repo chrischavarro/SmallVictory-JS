@@ -21,18 +21,34 @@ class Dashboard extends Component {
       this.props.fetchRepData(all_time);
   }
 
+  renderCharts() {
+    if (this.props.summary && this.props.summary[1].attempted) {
+      return (
+        <div>
+          <TaskBreakdown />
+          <CompletionRatio />
+          <VictoryTotal />
+          <RepTotal />
+        </div>
+      )
+    }
+  }
 
   render() {
+    console.log(this.props.summary)
+
+
     return (
       <div className="container">
         <Summary />
-        <TaskBreakdown />
-        <CompletionRatio />
-        <VictoryTotal />
-        <RepTotal />
+        {this.renderCharts()}
       </div>
     )
   }
 }
 
-export default connect(null, actions)(Dashboard);
+function mapStateToProps({summary}) {
+  return { summary }
+}
+
+export default connect(mapStateToProps, actions)(Dashboard);

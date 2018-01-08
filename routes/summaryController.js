@@ -15,7 +15,6 @@ summaryController.get('/api/summary', (req, res) => {
   Completion.find({ user_id: userId })
     .exec((err, completions) => {
       var percentage = 0;
-      // console.log('COMPLETIONS', completions)
       if (completions.length > 0) {
         completions.forEach((completion) => {
           if (completion.completed) {
@@ -42,7 +41,6 @@ summaryController.get('/api/summary', (req, res) => {
         summary.push({'attempted': attempted})
         summary.push(trackList)
         summary.push({'percentage': percentage})
-        console.log('SUMMARY', summary)
         res.send(summary)
       })
 
