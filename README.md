@@ -5,7 +5,7 @@ This is a full-stack web application created using Node, Express, MongoDB, and R
 
 ### What does it do?
 
-You'll be presented with a daily five-minute task based on the interests you choose on setup.
+You'll be presented with a daily five-minute task based on the interests you choose on setup. After completing your first task, you'll be presented with multiple charts that track your progress.
 NOTE: ONLY THE FITNESS TRACK CURRENTLY WORKS - The other tracks won't have any tasks for you to complete.
 
 #### What else do I have to know?
