@@ -17,20 +17,6 @@ class Dashboard extends Component {
       this.props.fetchRepData(all_time);
   }
 
-  // renderOverview() {
-  //   // const {name} = this.props.auth
-  //   // if (this.props.summary) {
-  //   //   const completed = this.props.summary[0].completed
-  //   //   const attempted = this.props.summary[1].attempted
-  //   //   const percentage = this.props.summary[3]
-  //   //   const track = this.props.summary[2][0]
-  //   //   // console.log(this.props.summary)
-  //     return (
-  //         <Summary />
-  //     )
-  //
-  // }
-
   render() {
     return (
       <div className="container">
@@ -47,11 +33,4 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    auth: state.auth,
-    summary: state.summary
-  }
-}
-
-export default connect(mapStateToProps, actions)(Dashboard);
+export default connect(null, actions)(Dashboard);
