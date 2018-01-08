@@ -6,9 +6,10 @@ const Profile = require('../models/Profile');
 
 
 trackController.get('/api/tracks/get', (req, res) => {
-  const { profile } = req.user
+  // const { profile } = req.user
+  const profile = ObjectId(req.user.profile)
   console.log('USER PROFILE', req.user, profile)
-  Profile.findById(profile._id)
+  Profile.findById(profile)
     .exec((err, profile) => {
       if (err) { console.log('Error occurred when finding profile', err) }
       console.log('USER PROFILE FOUND', profile)
