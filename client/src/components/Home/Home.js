@@ -31,7 +31,7 @@ class Home extends Component {
       }
       else {
         return (
-          <div style={{ marginTop: '15%', textAlign: 'center', color: '#7d7d7d' }}>
+          <div style={{ marginTop: '13%', textAlign: 'center', color: '#7d7d7d' }}>
             <Smiley />
             <HomeText />
             <span style={{ fontWeight: '400!important', fontSize: '26px', lineHeight: '1.1' }}>
