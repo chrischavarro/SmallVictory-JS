@@ -15,7 +15,7 @@ authController.get('/auth/google',
 authController.get('/auth/google/callback',
   passport.authenticate('google'),
   (req, res) => {
-    res.redirect('/');
+    res.redirect('/dashboard');
   }
 );
 
