@@ -1,22 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import validate from './validate';
-// import renderField from './renderField';
-// checked={true} className="btn" onChange={() => console.log('change')}
-// <div>
-// <input type="checkbox" key={day} name={day} value={day} id={day}  />{day}
-//
-// </div>
-// <Field
-// name={day}
-// component={renderField}
-// type="checkbox"
-// label={day}
-// key={day}
-// className="filled-in"
-// id="filled-in-box"
-// />
-// <input type="checkbox" className="filled-in" id={day} name={day} key={day} value={day} />
+
 class WizardFormFirstPage extends Component {
   renderFields() {
     const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
