@@ -14,12 +14,15 @@ class SelectTrack extends Component {
       console.log(this.props.tracks)
       const { tracks } = this.props
       return tracks.map((track) => {
+        let checkTrack = ''
+        if (track.name !== 'Fitness') { checkTrack = 'disabled'}
+        console.log('DISABLED', checkTrack)
         return (
           <div className="row" key={track._id}>
             <div key={track._id} style={{ paddingBottom: '10px' }} className="col s6 offset-s3">
               <button type="button"
                 onClick={() => this.props.selectTrack(track._id, history)}
-                className="btn-large"
+                className={`btn-large ${checkTrack}`}
                 style={{ textDecoration: 'uppercase', width: '100%', fontSize: '24px' }}
               >
                 {track.name}

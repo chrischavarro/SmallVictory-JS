@@ -15,7 +15,12 @@ authController.get('/auth/google',
 authController.get('/auth/google/callback',
   passport.authenticate('google'),
   (req, res) => {
-    res.redirect('/dashboard');
+    console.log('USER HAS PROFILE?', req.user.profile)
+    if (req.user.profile) {
+      res.redirect('/dashboard');
+    } else {
+      res.redirect('/')
+    }
   }
 );
 

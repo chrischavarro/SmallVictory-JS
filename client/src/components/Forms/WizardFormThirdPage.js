@@ -23,14 +23,12 @@ class WizardFormThirdPage extends Component {
     return (
       <div className="container col s8 offset-s2 wizardFormPage" style={{ marginBottom: '20px' }}>
         <h4 className="center-align formTitle">What do you want <br/> to get better at?</h4>
+        <h6 style={{ paddingBottom: '10px' }}>(Make sure to pick at least one fitness tag and the Fitness track for now!)</h6>
         <form onSubmit={handleSubmit}>
           <div style={{ width: '25%', margin: '0 auto', float: 'none', textTransform: 'capitalize', textAlign: 'left' }}>
             {this.renderTags()}
           </div>
           <div>
-            <button type="button" className="previous wizardContinueButton" onClick={previousPage}>
-              Previous
-            </button>
             <button type="submit" className="wizardContinueButton" disabled={pristine || submitting}>
               Submit
             </button>

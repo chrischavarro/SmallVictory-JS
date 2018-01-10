@@ -4,6 +4,17 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 
 class Header extends Component {
+  renderLogout() {
+    if (this.props.auth) {
+      return (
+        <ul className="right">
+        <li><a href="/api/logout">Log Out</a></li>
+        </ul>
+
+      )
+    }
+  }
+
   render() {
     var url = '/'
     if (this.props.auth) {
@@ -15,14 +26,12 @@ class Header extends Component {
           <Link to={url}>
             <img src={Logo} style={{ width: '200px', height: '30px', marginTop: '20px', marginLeft: '20px' }} alt="Small Victory" />
           </Link>
+          {this.renderLogout()}
         </div>
       </nav>
     )
   }
 }
-// <ul className="right">
-// <li><a href="/api/logout">Log Out</a></li>
-// </ul>
 
 function mapStateToProps({ auth }) {
   return { auth }
