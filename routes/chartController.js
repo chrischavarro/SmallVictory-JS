@@ -114,7 +114,7 @@ chartController.get('/api/rep_data/:time', (req, res) => {
   Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange }}, { track_id: fitnessTrack} ]})
     .populate('task_id')
     .exec((err, completions) => {
-      console.log('COMPLETIONS FOUND', completions)
+      // console.log('COMPLETIONS FOUND', completions)
       const repMap = new Map();
       completions.forEach((completion) => {
         let taskName = completion.task_id.name
@@ -126,7 +126,7 @@ chartController.get('/api/rep_data/:time', (req, res) => {
         }
       })
       var repData = mapToObj(repMap)
-      console.log('REP DATA', repData)
+      // console.log('REP DATA', repData)
       res.send(repData)
     })
 })

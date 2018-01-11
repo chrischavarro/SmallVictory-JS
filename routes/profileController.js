@@ -4,6 +4,7 @@ const profileController = express.Router()
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 const Tag = require('../models/Tag');
+const Completion = require('../models/Completion');
 
 const filterTagsFromRequest = (requestBody) => {
   const tags = [];
@@ -59,12 +60,16 @@ profileController.post('/api/profile/create', (req, res) => {
 
 profileController.get('/api/profile/reset', (req, res) => {
   const { user } = req
-  Profile.remove({ _id: user.profile })
-    .exec((err) => {
-      if (err) { console.log('Something went wrong', err)}
-      user.profile = undefined
-      user.save(() => {
-        res.redirect('/')
+  Completion.remove({ user_id: user._id })
+  .exec((err) => {
+    if (err) { console.log('Something went wrong when deleting completions', err)}
+    Profile.remove({ _id: user.profile })
+      .exec((err) => {
+        if (err) { console.log('Something went wrong', err)}
+          user.profile = undefined
+          user.save(() => {
+            res.redirect('/')
+        })
       })
     })
 })
