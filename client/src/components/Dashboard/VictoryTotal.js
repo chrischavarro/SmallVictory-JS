@@ -18,8 +18,10 @@ class VictoryTotal extends Component {
       labels: victoryLabels,
       datasets: [{
         data: victoryGraphData,
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB']
+        backgroundColor: ["rgba(255, 99, 132, 0.8)", "rgba(54, 162, 235, 0.8)", "rgba(255, 206, 86, 0.8)", "rgba(38, 166, 154, 0.8)",
+        "rgba(12, 52, 251, 0.8)", "rgba(96, 55, 169, 0.8)", "rgba(255, 132, 8, 0.8)", "rgba(216,255,80, 0.8)", "rgba(92,0,0, 0.8)"],
+        hoverBackgroundColor: ["rgba(255, 99, 132, 0.7)", "rgba(54, 162, 235, 0.7)", "rgba(255, 206, 86, 0.7)", "rgba(38, 166, 154, 0.7)",
+        "rgba(12, 52, 251, 0.7)", "rgba(96, 55, 169, 0.7)", "rgba(255, 132, 8, 0.7)", "rgba(216,255,70, 0.7)", "rgba(92,0,0, 0.7)"]
       }]
     }
     var week = '7'

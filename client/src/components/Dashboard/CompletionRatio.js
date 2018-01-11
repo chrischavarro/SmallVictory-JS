@@ -27,14 +27,14 @@ class CompletionRatio extends Component {
           label: 'Completed',
           data: completedDataArray,
           // backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED','#36A2EB'],
-          backgroundColor: ['#FF6384'],
-          hoverBackgroundColor: ['#36A2EB']
+          backgroundColor: ['rgba(38, 166, 154, 0.8)'],
+          hoverBackgroundColor: ['rgba(38, 166, 154, 0.7)']
         },
         {
           label: 'Attempted',
           data: attemptedDataArray,
-          backgroundColor: ['#FFCE56'],
-          hoverBackgroundColor: ['#E7E9ED']
+          backgroundColor: ["rgba(255, 206, 86, 0.8)"],
+          hoverBackgroundColor: ["rgba(255, 206, 86, 0.7)"]
         }
       ]
     }

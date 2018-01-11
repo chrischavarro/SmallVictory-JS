@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Logo from '../images/small-victory-logo.png'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import {Modal, Button, Icon} from 'react-materialize'
+import {Modal} from 'react-materialize'
 import * as actions from '../actions'
 import { withRouter } from 'react-router';
 
@@ -42,12 +42,12 @@ class Header extends Component {
   render() {
     var url = '/'
     if (this.props.auth) {
-      var url='/dashboard'
+      url='/dashboard'
     }
     return (
       <nav style={{ backgroundColor: '#3C78D8' }}>
         <div className="nav-wrapper">
-            <a className="brand-logo" href="#"><img src={Logo} style={{ width: '200px', height: '30px', marginLeft: '20px', marginTop: '15px' }} alt="Small Victory" /></a>
+            <Link to={`${url}`} className="brand-logo"><img src={Logo} style={{ width: '200px', height: '30px', marginLeft: '20px', marginTop: '15px' }} alt="Small Victory" /></Link>
           {this.renderLogout()}
         </div>
       </nav>

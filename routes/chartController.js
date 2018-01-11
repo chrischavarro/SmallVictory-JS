@@ -108,7 +108,11 @@ chartController.get('/api/victory_data/:time', (req, res) => {
 chartController.get('/api/rep_data/:time', (req, res) => {
   const userId = req.user._id;
   const time = req.params.time;
-  const fitnessTrack = '5a53d1d9a0da030014f428c6'
+  if (process.env.NODE_ENV === 'production') {
+    let fitnessTrack = '5a53d1d9a0da030014f428c6'
+  } else {
+    fitnessTrack = '5a4d09bcf4144cd1267e9865'
+  }
   const searchRange = ago(time, "days");
 
   Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange }}, { track_id: fitnessTrack} ]})
