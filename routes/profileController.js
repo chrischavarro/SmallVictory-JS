@@ -57,4 +57,16 @@ profileController.post('/api/profile/create', (req, res) => {
     });
 })
 
+profileController.get('/api/profile/reset', (req, res) => {
+  const { user } = req
+  Profile.remove({ _id: user.profile })
+    .exec((err) => {
+      if (err) { console.log('Something went wrong', err)}
+      user.profile = undefined
+      user.save(() => {
+        res.redirect('/')
+      })
+    })
+})
+
 module.exports = profileController;

@@ -5,6 +5,7 @@ import * as actions from '../../actions';
 
 class TaskBreakdown extends Component {
   render() {
+    // console.log(this.props.repData)
     const labelArray = []
     const dataArray = []
     if (this.props.repData) {

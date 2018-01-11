@@ -11,7 +11,6 @@ import RepTotal from './Dashboard/RepTotal';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Dashboard extends Component {
-
   componentWillMount() {
     var all_time = 9999
       this.props.fetchSummary();

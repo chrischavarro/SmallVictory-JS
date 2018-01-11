@@ -21,7 +21,7 @@ class Home extends Component {
 
   renderPage() {
     const { history } = this.props
-
+console.log(this.props.auth)
      if (this.props.auth && !this.props.auth.profile) {
           return (
             <div>

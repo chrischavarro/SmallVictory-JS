@@ -11,12 +11,11 @@ class SelectTrack extends Component {
   renderTracks() {
     const { history } = this.props
     if (this.props.tracks) {
-      console.log(this.props.tracks)
+      // console.log(this.props.tracks)
       const { tracks } = this.props
       return tracks.map((track) => {
         let checkTrack = ''
         if (track.name !== 'Fitness') { checkTrack = 'disabled'}
-        console.log('DISABLED', checkTrack)
         return (
           <div className="row" key={track._id}>
             <div key={track._id} style={{ paddingBottom: '10px' }} className="col s6 offset-s3">

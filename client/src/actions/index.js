@@ -72,3 +72,7 @@ export const fetchRepData = (time) => async dispatch => {
   const res = await axios.get(`/api/rep_data/${time}`);
   dispatch({ type: FETCH_REP_DATA, payload: res.data })
 }
+
+export const resetProfile = () => async dispatch => {
+  axios.get('/api/profile/reset');
+}

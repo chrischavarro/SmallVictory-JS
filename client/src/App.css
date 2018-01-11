@@ -40,6 +40,26 @@
   position: absolute;
 } */
 
+.modal-content h4 {
+  font-size: 46px!important;
+  font-weight: 200!important;
+}
+
+.modal-footer button {
+  float: none!important;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.modal-footer {
+  background-color: rgb(60, 120, 216)!important;
+  color: white!important;
+}
+
+.modal-close {
+  color: white!important;
+}
+
 .headerText {
   font-weight: 300;
   font-size: 50px;

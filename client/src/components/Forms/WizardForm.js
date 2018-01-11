@@ -33,19 +33,22 @@ class WizardForm extends Component {
     if (this.props.tags) {
       return (
         <div className="container col s12 center-align">
-        <span className="greetingText" style={{ marginTop: '150px' }}>{`Hey ${this.props.auth.name}! Let's get started.`}</span>
-        <WizardFormThirdPage
-        previousPage={this.previousPage}
-        onSubmit={onSubmit}
-        tags={this.props.tags}
-        />
+          <span className="greetingText" style={{ marginTop: '150px' }}>{`Hey ${this.props.auth.name}! Let's get started.`}</span>
+          <WizardFormThirdPage
+          previousPage={this.previousPage}
+          onSubmit={onSubmit}
+          tags={this.props.tags}
+          />
         </div>
       )
 
     } else {
       return (
-        <div>
-          Loading...
+        <div className="container col s12 center-align">
+          <div className="col s8 offset-s2 wizardFormPage">
+            <h4 className="center-align formTitle">What do you want <br/> to get better at?</h4>
+            <h6 style={{ paddingBottom: '10px' }}>(Make sure to pick at least one fitness tag and the Fitness track for now!)</h6>
+          </div>
         </div>
       )
     }
