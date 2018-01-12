@@ -73,7 +73,7 @@ class TaskNew extends Component {
 
   render() {
     return (
-      <div className="row" style={{ marginTop: "5%" }}>
+      <div className="row newTaskDiv" style={{ marginTop: "5%" }}>
         {this.renderTask()}
         <ReactCSSTransitionGroup
         transitionName="fade"

@@ -348,6 +348,10 @@
     margin-left: 8.3333333333%!important;
   }
 
+  .newTaskDiv {
+    margin-top: 0px!important;
+  }
+
   .taskTitle {
     font-size: 35px!important;
   }
