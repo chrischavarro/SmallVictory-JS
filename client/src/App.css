@@ -66,6 +66,16 @@
   color: #7d7d7d;
 }
 
+.headerLogo {
+  height: 30px;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.homeButton {
+  width: 20%!important;
+}
+
 /*  WIZARD STYLING */
 
 .greetingText {
@@ -135,6 +145,20 @@
 
 .wizardContinueButton:hover {
     background-color: #26a69a;
+}
+
+.trackButton {
+  text-decoration: uppercase;
+  width: 100%;
+  font-size: 24px;
+}
+
+.trackButtonDiv {
+  padding-bottom: 10px;
+}
+
+.greetingText {
+  margin-top: 150px;
 }
 
 /*  DASHBOARD STYLING */
@@ -235,21 +259,157 @@
   color: #fff;
   border: 1px solid transparent;
   border-radius: 2px;
-  height: 75px;
-  font-size: 35px;
+  height: 80px;
+  font-size: 36px;
   font-weight: 600;
   outline: 0;
   margin-top: 10px;
   letter-spacing: .5px;
   transition: all .3s;
   margin-bottom: 15px;
-  width: 35%;
-  // border-color: #2e6da4;
-  // padding-left: 3.5rem;
-  // padding-right: 3.5rem;
-  // text-transform: uppercase;
+  width: 40%;
 }
 
 .startTimer:hover {
     background-color: #26a69a!important;
+}
+
+.finishTask {
+  /* backgroundColor: '#3C78D8', width: '25%', fontSize: '36px', height: '80px', marginTop: '40px' */
+  background-color: #3C78D8;
+  width: 25%;
+  font-size: 36px;
+  height: 80px;
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+/*  HOME PAGE STYLING */
+  .homeDiv {
+    margin-top: 45%!important;
+  }
+
+  .homeTextDiv,
+  .smileyDiv {
+    margin-left: 16.6666666667%!important;
+    width: 66.6666666667%!important;
+    left: auto;
+    right: auto;
+  }
+
+  .homeText {
+      width: 220px!important;
+      height: 40px!important;
+  }
+
+  .homeButton {
+    font-size: 28px!important;
+    width: 205px!important;
+  }
+
+  .settingsLink {
+    display: none!important;
+  }
+
+  .headerLogo {
+    width: auto;
+    margin-left: 0px;
+  }
+
+/*  SETUP STYLING */
+
+  .formTitle {
+    font-size: 30px!important;
+  }
+
+  .labelText {
+    font-size: 18pt!important;
+  }
+
+  .formDiv {
+    width: 50%!important;
+  }
+
+  .greetingText {
+    margin-top: 16%!important;
+    font-size: 35px!important;
+  }
+
+  .trackDiv {
+    margin-top: 40%
+  }
+
+  .trackButton {
+    font-size: 20px!important;
+  }
+
+  .trackButtonDiv {
+    width: 83.3333333333%!important;
+    margin-left: 8.3333333333%!important;
+  }
+
+  .taskTitle {
+    font-size: 35px!important;
+  }
+
+  .taskInfo {
+    width: 83.3333333333%!important;
+    margin-left: 8.3333333333%!important;
+  }
+
+  .startTimer {
+    width: 75%!important;
+  }
+
+  .taskTimer {
+    width: 83.3333333333%!important;
+    margin-left: 8.3333333333%!important;
+    padding-left: 5%!important;
+    padding-top: 10px!important
+  }
+
+  .react-countdown-clock {
+    width: 275px!important;
+    height: 275px!important;
+  }
+
+  .react-countdown-clock canvas {
+    width: 275px!important;
+    height: 275px!important;
+  }
+
+  .finishTask {
+    width: 75%!important;
+    margin-top: 30px!important;
+  }
+
+/* DASHBOARD STYLING */
+  .startTask {
+    width: auto;
+  }
+
+  .dashboardSummary, .completionChart {
+    width: 83.3333333333%!important;
+    margin-left: 8.3333333333%!important;
+  }
+
+  .summaryText {
+    font-size: 28px!important;
+  }
+
+  .chartBreakdown {
+    font-size: 23px!important;
+    padding-bottom: 0px!important;
+  }
+
+  .updateChart {
+    width: 85%!important;
+    height: 60px!important;
+    margin: 5px 0px 5px 0px!important;
+  }
+
+  .completionChart canvas {
+    height: 100%!important;
+    width: 100%!important;
+  }
 }

@@ -8,9 +8,9 @@ import * as actions from '../../actions';
 
 class Home extends Component {
 
-  componentWillMount() {
-    this.props.fetchUser();
-  }
+  // componentWillMount() {
+  //   this.props.fetchUser();
+  // }
 
   handleSubmit(values) {
     const { history } = this.props
@@ -30,14 +30,14 @@ class Home extends Component {
       }
       else {
         return (
-          <div style={{ marginTop: '13%', textAlign: 'center', color: '#7d7d7d' }}>
+          <div className="homeDiv" style={{ marginTop: '13%', textAlign: 'center', color: '#7d7d7d' }}>
             <Smiley />
             <HomeText />
             <span style={{ fontWeight: '400!important', fontSize: '26px', lineHeight: '1.1' }}>
               Do one 5 minute task that <br/> makes you <span style={{ textDecoration: 'underline' }}>better.</span>
             </span>
             <div style={{ marginTop: '20px' }}>
-              <a href="/auth/google"><button className="startTask" style={{ width: '20%' }}>Get Started</button></a>
+              <a href="/auth/google"><button className="startTask homeButton">Get Started</button></a>
               <span style={{ fontWeight: '400!important', fontSize: '26px', textDecoration: 'none' }}>
               </span>
             </div>

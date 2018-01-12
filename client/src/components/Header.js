@@ -12,7 +12,7 @@ class Header extends Component {
     // // console.log(this.props.history)
     if (this.props.auth) {
       return (
-        <ul className="right">
+        <ul className="right settingsLink">
           <li>
             <Modal
               header='Profile Settings'
@@ -31,7 +31,7 @@ class Header extends Component {
     }
     else {
       return (
-        <ul className="right">
+        <ul className="right settingsLink">
           <li>
             <a href="mailto:chavarro.christian@gmail.com">Contact</a>
           </li>
@@ -48,7 +48,7 @@ class Header extends Component {
     return (
       <nav style={{ backgroundColor: '#3C78D8' }}>
         <div className="nav-wrapper">
-            <Link to={`${url}`} className="brand-logo"><img src={Logo} style={{ width: '200px', height: '30px', marginLeft: '20px', marginTop: '15px' }} alt="Small Victory" /></Link>
+            <Link to={`${url}`} className="brand-logo"><img src={Logo}  alt="Small Victory" className="headerLogo"/></Link>
           {this.renderLogout()}
         </div>
       </nav>

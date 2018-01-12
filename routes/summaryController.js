@@ -33,15 +33,20 @@ summaryController.get('/api/summary', (req, res) => {
       Profile.findById(profile)
       .populate('tracks')
       .exec((err, profile) => {
-        if (err) { console.log('ERROR WHILE RETRIEVING PROFILE', err)}
-        profile.tracks.forEach((track) => {
-          trackList.push(track.name)
-        })
-        summary.push({'completed': completed})
-        summary.push({'attempted': attempted})
-        summary.push(trackList)
-        summary.push({'percentage': percentage})
-        res.send(summary)
+        if (profile) {
+          if (err) { console.log('ERROR WHILE RETRIEVING PROFILE', err)}
+          profile.tracks.forEach((track) => {
+            trackList.push(track.name)
+          })
+          summary.push({'completed': completed})
+          summary.push({'attempted': attempted})
+          summary.push(trackList)
+          summary.push({'percentage': percentage})
+          res.send(summary)
+        }
+        else {
+          res.send(null)
+        }
       })
 
     })

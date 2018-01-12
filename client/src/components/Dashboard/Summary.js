@@ -10,7 +10,8 @@ class Summary extends Component {
     let attempted = '';
     let percentage = '0';
     let track = '';
-    // console.log('Summary info', this.props.summary)
+    console.log('Summary info', this.props.summary)
+    console.log('Auth info', this.props.auth)
     if (this.props.summary && this.props.auth) {
       name = this.props.auth.name
       completed = this.props.summary[0].completed
@@ -18,7 +19,6 @@ class Summary extends Component {
       percentage = this.props.summary[3].percentage
       track = this.props.summary[2][0]
     }
-    // <h4 className="summaryText">{`You're currently on a x day streak`}</h4>
     if (attempted !== 0) {
       return (
         <div className="row" style={{ paddingTop: '70px' }}>
@@ -38,6 +38,24 @@ class Summary extends Component {
         </div>
       )
     }
+    else if (this.props.summary == null) {
+      return (
+        <div className="row" style={{ paddingTop: '70px' }}>
+        <div className="dashboardSummary col s8 offset-s2 center-align" style={{ }}>
+        <h4 className="summaryHeader">{`You don't have a profile set up yet!`}</h4>
+        <h4 className="summaryText">{`You haven't started any tasks yet!`}</h4>
+        <h4 className="summaryTrack">{`You're on the ${track} track`}</h4>
+        <h4 className="summaryText">{`Ready for your first task?`}</h4>
+
+        <Link to="/tasks/new" style={{ textDecoration: 'none', color: 'white' }}>
+        <button className="startTask" type="button">
+        {"Let's Go!"}
+        </button>
+        </Link>
+        </div>
+        </div>
+      )
+    }
     else {
       return (
         <div className="row" style={{ paddingTop: '70px' }}>
@@ -54,7 +72,6 @@ class Summary extends Component {
             </Link>
           </div>
         </div>
-
       )
     }
   }

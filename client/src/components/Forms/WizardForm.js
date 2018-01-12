@@ -33,7 +33,7 @@ class WizardForm extends Component {
     if (this.props.tags) {
       return (
         <div className="container col s12 center-align">
-          <span className="greetingText" style={{ marginTop: '150px' }}>{`Hey ${this.props.auth.name}! Let's get started.`}</span>
+          <span className="greetingText">{`Hey ${this.props.auth.name}! Let's get started.`}</span>
           <WizardFormThirdPage
           previousPage={this.previousPage}
           onSubmit={onSubmit}

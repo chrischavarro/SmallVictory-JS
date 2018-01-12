@@ -18,11 +18,10 @@ class SelectTrack extends Component {
         if (track.name !== 'Fitness') { checkTrack = 'disabled'}
         return (
           <div className="row" key={track._id}>
-            <div key={track._id} style={{ paddingBottom: '10px' }} className="col s6 offset-s3">
+            <div key={track._id} className="col s6 offset-s3 trackButtonDiv">
               <button type="button"
                 onClick={() => this.props.selectTrack(track._id, history)}
-                className={`btn-large ${checkTrack}`}
-                style={{ textDecoration: 'uppercase', width: '100%', fontSize: '24px' }}
+                className={`btn-large ${checkTrack} trackButton`}
               >
                 {track.name}
               </button>
@@ -35,7 +34,7 @@ class SelectTrack extends Component {
 
   render() {
     return (
-      <div className="container col s12 center-align">
+      <div className="container col s12 center-align trackDiv">
         <span className="greetingText" style={{ marginTop: '150px' }}>{`Select Your Track`}</span>
         <div className="container col s8 offset-s2 wizardFormPage" style={{ paddingTop: '40px' }}>
           {this.renderTracks()}

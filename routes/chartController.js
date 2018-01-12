@@ -19,7 +19,6 @@ chartController.get('/api/chart_data/:time', (req, res) => {
   var doughnutLabels = [];
   var doughnutData = [];
   var searchRange = ago(time, "days")
-  // ago installation checks for created within last x days
   Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange} } ]})
     .populate('taskType')
     .exec((err, completions) => {

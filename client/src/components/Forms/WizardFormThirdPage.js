@@ -25,7 +25,7 @@ class WizardFormThirdPage extends Component {
         <h4 className="center-align formTitle">What do you want <br/> to get better at?</h4>
         <h6 style={{ paddingBottom: '10px' }}>(Make sure to pick at least one fitness tag and the Fitness track for now!)</h6>
         <form onSubmit={handleSubmit}>
-          <div style={{ width: '25%', margin: '0 auto', float: 'none', textTransform: 'capitalize', textAlign: 'left' }}>
+          <div style={{ width: '25%', margin: '0 auto', float: 'none', textTransform: 'capitalize', textAlign: 'left' }} className="formDiv">
             {this.renderTags()}
           </div>
           <div>

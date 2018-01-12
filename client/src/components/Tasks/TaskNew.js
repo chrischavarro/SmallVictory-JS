@@ -23,13 +23,12 @@ class TaskNew extends Component {
       const count = this.props.task[1]
       const task = this.props.task[0].name
       return (
-        <div className="col s6 offset-s3 center-align" style={{ }}>
-          <h1 className="headerText">{"Here's your task for today"}</h1>
-          <h2 className="headerText">{`Do ${count} ${task}`}</h2>
+        <div className="col s6 offset-s3 center-align taskInfo" style={{ }}>
+          <h1 className="headerText taskTitle">{"Here's your task for today"}</h1>
+          <h2 className="headerText taskTitle">{`Do ${count} ${task}`}</h2>
           <button
             className="startTimer"
             type="button"
-            style={{ width: '40%', fontSize: '36px', height: '80px', backgroundColor: '#3C78D8' }}
             onClick={() => this.setState({ taskStarted: true })}
           >
             {"START"}
@@ -48,7 +47,7 @@ class TaskNew extends Component {
         console.log('HISTORY', this.props.history)
         return (
           <div className="row">
-            <div className="col s4 offset-s4" style={{ paddingTop: '50px', paddingLeft: '5%' }}>
+            <div className="col s4 offset-s4 taskTimer" style={{ paddingTop: '50px', paddingLeft: '5%' }}>
               <ReactCountdownClock
               seconds={300}
               alpha={1}
@@ -59,8 +58,7 @@ class TaskNew extends Component {
             </div>
             <div className="col s12 center-align">
               <button
-                className="btn-large center-align"
-                style={{ backgroundColor: '#3C78D8', width: '25%', fontSize: '36px', height: '80px', marginTop: '40px' }}
+                className="btn-large center-align finishTask"
                 onClick={() => this.props.completedTask(task, history)}
               >
                 Finished
