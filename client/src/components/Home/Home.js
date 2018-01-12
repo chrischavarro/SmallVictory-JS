@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Smiley from './Smiley';
 import HomeText from './HomeText';
-import Dashboard from '../Dashboard';
 import WizardForm from '../Forms/WizardForm';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -21,7 +20,7 @@ class Home extends Component {
 
   renderPage() {
     const { history } = this.props
-console.log(this.props.auth)
+// console.log(this.props.auth)
      if (this.props.auth && !this.props.auth.profile) {
           return (
             <div>
@@ -38,7 +37,7 @@ console.log(this.props.auth)
               Do one 5 minute task that <br/> makes you <span style={{ textDecoration: 'underline' }}>better.</span>
             </span>
             <div style={{ marginTop: '20px' }}>
-              <a href="/auth/google" className="waves-effect waves-light btn-large" style={{ backgroundColor: '#3C78D8', fontSize: '25px' }}>Get Started</a>
+              <a href="/auth/google"><button className="startTask" style={{ width: '20%' }}>Get Started</button></a>
               <span style={{ fontWeight: '400!important', fontSize: '26px', textDecoration: 'none' }}>
               </span>
             </div>

@@ -8,16 +8,20 @@ import VictoryTotal from './Dashboard/VictoryTotal';
 import RepTotal from './Dashboard/RepTotal';
 
 // import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Dashboard extends Component {
   componentWillMount() {
     var all_time = 9999
-      this.props.fetchSummary();
-      this.props.fetchChartData(all_time);
-      this.props.fetchRadarData(all_time);
-      this.props.fetchVictoryData(all_time);
-      this.props.fetchRepData(all_time);
+    this.props.fetchSummary();
+    this.props.fetchChartData(all_time);
+    this.props.fetchRadarData(all_time);
+    this.props.fetchVictoryData(all_time);
+    this.props.fetchRepData(all_time);
+  }
+
+  componentDidMount() {
+
   }
 
   renderCharts() {
@@ -33,6 +37,8 @@ class Dashboard extends Component {
     }
   }
 
+
+
   render() {
     // console.log(this.props.summary)
     return (
@@ -44,8 +50,11 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({summary}) {
-  return { summary }
+function mapStateToProps(state) {
+  return {
+    summary: state.summary,
+    auth: state.auth
+  }
 }
 
 export default connect(mapStateToProps, actions)(Dashboard);

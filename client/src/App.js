@@ -9,7 +9,6 @@ import Dashboard from './components/Dashboard';
 import SelectTrack from './components/Track/SelectTrack';
 import TaskNew from './components/Tasks/TaskNew';
 import * as actions from './actions';
-import { CSSTransitionGroup } from 'react-transition-group';
 import './App.css';
 
 function glide(val) {
@@ -116,16 +115,16 @@ class App extends Component {
                 exact path="/dashboard"
                 component={Dashboard}
                 atEnter={bounceTransition.atEnter}
-atLeave={bounceTransition.atLeave}
-atActive={bounceTransition.atActive}
+                atLeave={bounceTransition.atLeave}
+                atActive={bounceTransition.atActive}
 
               />
               <AnimatedRoute
                 exact path="/tasks/new"
                 component={TaskNew}
                 atEnter={bounceTransition.atEnter}
-atLeave={bounceTransition.atLeave}
-atActive={bounceTransition.atActive}
+                atLeave={bounceTransition.atLeave}
+                atActive={bounceTransition.atActive}
               />
               <Route path="/select-track" component={SelectTrack} />
           </div>

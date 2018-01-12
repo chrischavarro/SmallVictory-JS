@@ -12,6 +12,7 @@ const mapToObj = ( aMap => {
   return obj
 })
 
+// Try and change forEach to reduce or map
 chartController.get('/api/chart_data/:time', (req, res) => {
   const userId = req.user._id;
   const time = req.params.time;
@@ -23,7 +24,7 @@ chartController.get('/api/chart_data/:time', (req, res) => {
     .populate('taskType')
     .exec((err, completions) => {
       if (err) { console.log(err) }
-      completions.sort((a,b) => a.taskType.name.localeCompare(b.taskType.name))
+      // completions.sort((a,b) => a.taskType.name.localeCompare(b.taskType.name))
       var result = new Map();
       completions.forEach((completion) => {
         var labelName = completion.taskType.name
@@ -48,7 +49,7 @@ chartController.get('/api/radar_data/:time', (req, res) => {
   Completion.find({ $and: [{ user_id: { $in: userId }}, { createdAt: { $gte: searchRange} } ]})
     .populate('taskType')
     .exec((err, completions) => {
-      completions.sort((a,b) => a.taskType.name.localeCompare(b.taskType.name))
+      // completions.sort((a,b) => a.taskType.name.localeCompare(b.taskType.name))
       var completedTasks = completions.filter(completion => completion.completed == true)
       var radarData = []
       var attemptedResult = new Map();
@@ -109,7 +110,7 @@ chartController.get('/api/rep_data/:time', (req, res) => {
   const userId = req.user._id;
   const time = req.params.time;
   if (process.env.NODE_ENV === 'production') {
-    let fitnessTrack = '5a53d1d9a0da030014f428c6'
+    var fitnessTrack = '5a53d1d9a0da030014f428c6'
   } else {
     fitnessTrack = '5a4d09bcf4144cd1267e9865'
   }

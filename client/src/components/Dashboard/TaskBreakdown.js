@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Doughnut } from 'react-chartjs-2'
 import * as actions from '../../actions';
-import styles from '../../App.css'
 
 class TaskBreakdown extends Component {
   render() {

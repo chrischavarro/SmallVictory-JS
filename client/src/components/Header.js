@@ -30,12 +30,13 @@ class Header extends Component {
       )
     }
     else {
-      <ul className="right">
-        <li>
-          <a href="mailto:chavarro.christian@gmail.com">Contact</a>
-        </li>
-      </ul>
-
+      return (
+        <ul className="right">
+          <li>
+            <a href="mailto:chavarro.christian@gmail.com">Contact</a>
+          </li>
+        </ul>
+      )
     }
   }
 

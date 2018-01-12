@@ -45,6 +45,7 @@ class TaskNew extends Component {
         return null
       case true:
         const { task, history } = this.props
+        console.log('HISTORY', this.props.history)
         return (
           <div className="row">
             <div className="col s4 offset-s4" style={{ paddingTop: '50px', paddingLeft: '5%' }}>
@@ -67,6 +68,8 @@ class TaskNew extends Component {
             </div>
           </div>
         )
+        default:
+          return null
     }
   }
 

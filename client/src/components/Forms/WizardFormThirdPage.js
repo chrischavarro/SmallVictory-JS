@@ -19,7 +19,7 @@ class WizardFormThirdPage extends Component {
   // {this.renderTags()}
   render() {
     // console.log('Test props!', this.props.tags)
-    const { handleSubmit, pristine, previousPage, submitting } = this.props
+    const { handleSubmit, pristine, submitting } = this.props
     return (
       <div className="container col s8 offset-s2 wizardFormPage" style={{ marginBottom: '20px' }}>
         <h4 className="center-align formTitle">What do you want <br/> to get better at?</h4>
@@ -38,31 +38,7 @@ class WizardFormThirdPage extends Component {
     )
   }
 }
-//
-// const WizardFormThirdPage = props => {
-//   const { handleSubmit, pristine, previousPage, submitting } = props
-//   console.log('Test props!', this.props.test)
-//   return (
-//     <div className="container" style={{ paddingTop: '150px' }}>
-//       <form onSubmit={handleSubmit}>
-//         <div>
-//           <label>Notes</label>
-//           <div>
-//             <Field name="notes" component="textarea" placeholder="Notes" />
-//           </div>
-//         </div>
-//         <div>
-//           <button type="button" className="previous" onClick={previousPage}>
-//             Previous
-//           </button>
-//           <button type="submit" disabled={pristine || submitting}>
-//             Submit
-//           </button>
-//         </div>
-//       </form>
-//     </div>
-//   )
-// }
+
 export default reduxForm({
   form: 'wizard', //Form name is same
   destroyOnUnmount: false,
