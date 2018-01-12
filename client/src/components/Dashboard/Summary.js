@@ -21,7 +21,7 @@ class Summary extends Component {
     }
     if (attempted !== 0) {
       return (
-        <div className="row" style={{ paddingTop: '70px' }}>
+        <div className="row summaryDiv" style={{ paddingTop: '70px' }}>
           <div className="dashboardSummary col s8 offset-s2 center-align" style={{ }}>
             <h4 className="summaryHeader">{`What's up, ${name}?`}</h4>
             <h4 className="summaryText">{`You've completed ${completed} out of ${attempted} tasks`}</h4>
@@ -40,7 +40,7 @@ class Summary extends Component {
     }
     else if (this.props.summary == null) {
       return (
-        <div className="row" style={{ paddingTop: '70px' }}>
+        <div className="row summaryDiv" style={{ paddingTop: '70px' }}>
         <div className="dashboardSummary col s8 offset-s2 center-align" style={{ }}>
         <h4 className="summaryHeader">{`You don't have a profile set up yet!`}</h4>
         <h4 className="summaryText">{`You haven't started any tasks yet!`}</h4>
@@ -58,7 +58,7 @@ class Summary extends Component {
     }
     else {
       return (
-        <div className="row" style={{ paddingTop: '70px' }}>
+        <div className="row summaryDiv" style={{ paddingTop: '70px' }}>
           <div className="dashboardSummary col s8 offset-s2 center-align" style={{ }}>
             <h4 className="summaryHeader">{`What's up, ${name}?`}</h4>
             <h4 className="summaryText">{`You haven't started any tasks yet!`}</h4>

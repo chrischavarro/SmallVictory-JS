@@ -384,6 +384,10 @@
   }
 
 /* DASHBOARD STYLING */
+  .summaryDiv {
+    padding-top: 40px!important;
+  }
+
   .startTask {
     width: auto;
   }
@@ -403,7 +407,7 @@
   }
 
   .updateChart {
-    width: 85%!important;
+    width: 90%!important;
     height: 60px!important;
     margin: 5px 0px 5px 0px!important;
   }
