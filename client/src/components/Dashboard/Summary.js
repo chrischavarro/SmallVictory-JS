@@ -10,8 +10,8 @@ class Summary extends Component {
     let attempted = '';
     let percentage = '0';
     let track = '';
-    console.log('Summary info', this.props.summary)
-    console.log('Auth info', this.props.auth)
+    // console.log('Summary info', this.props.summary)
+    // console.log('Auth info', this.props.auth)
     if (this.props.summary && this.props.auth) {
       name = this.props.auth.name
       completed = this.props.summary[0].completed
