@@ -25,18 +25,6 @@ function slide(val) {
   });
 }
 
-// const pageTransitions = {
-//   atEnter: {
-//     opacity: 0
-//   },
-//   atLeave: {
-//     opacity: 0
-//   },
-//   atActive: {
-//     opacity: 1
-//   },
-// };
-
 const pageTransitions = {
   atEnter: {
     offset: 100
@@ -91,15 +79,6 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
   }
-
-
-  // <AnimatedSwitch
-  // className="switch-wrapper"
-  // {...pageTransitions}
-  // mapStyles={styles => ({
-  //   transform: `translateX(${styles.offset}%)`,
-  // })}
-  // >
   render() {
     return (
       <div>
@@ -133,7 +112,6 @@ class App extends Component {
     );
   }
 }
-// </AnimatedSwitch>
 
 
 export default connect(null, actions)(App);

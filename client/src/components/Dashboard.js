@@ -12,17 +12,13 @@ import { withRouter } from 'react-router'
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Dashboard extends Component {
-  componentWillMount() {
+  componentDidMount() {
     var all_time = 9999
       this.props.fetchSummary();
       this.props.fetchChartData(all_time);
       this.props.fetchRadarData(all_time);
       this.props.fetchVictoryData(all_time);
       this.props.fetchRepData(all_time);
-  }
-
-  componentDidMount() {
-
   }
 
   renderCharts() {

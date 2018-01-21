@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 class SelectTrack extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTracks()
   }
 

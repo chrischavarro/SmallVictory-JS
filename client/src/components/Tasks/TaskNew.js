@@ -14,7 +14,7 @@ class TaskNew extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTask()
   }
 
