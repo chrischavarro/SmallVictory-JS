@@ -274,6 +274,10 @@
     background-color: #26a69a!important;
 }
 
+.react-countdown-clock {
+  margin: auto;
+}
+
 .finishTask {
   /* backgroundColor: '#3C78D8', width: '25%', fontSize: '36px', height: '80px', marginTop: '40px' */
   background-color: #3C78D8;
