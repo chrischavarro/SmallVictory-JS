@@ -47,7 +47,7 @@ class TaskNew extends Component {
         console.log('HISTORY', this.props.history)
         return (
           <div className="row">
-            <div className="col s4 offset-s4 taskTimer" style={{ paddingTop: '50px', paddingLeft: '5%' }}>
+            <div className="col s4 offset-s4 taskTimer" style={{ paddingTop: '50px' }}>
               <ReactCountdownClock
               seconds={300}
               alpha={1}
